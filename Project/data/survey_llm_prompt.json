@@ -1,0 +1,781 @@
+{
+  "profile": {
+    "n_rows": 95,
+    "columns": [
+      "gender",
+      "field",
+      "used_ai",
+      "heard_simplify",
+      "job_status",
+      "difficulty",
+      "page",
+      "signup",
+      "useful",
+      "regular",
+      "recommend"
+    ],
+    "id_col": null,
+    "target_col": "signup",
+    "treatment_col": "page",
+    "rebalance_mode": "preserve",
+    "schema": {
+      "categorical_cols": [
+        "field",
+        "heard_simplify",
+        "job_status",
+        "difficulty",
+        "page",
+        "signup",
+        "useful",
+        "regular",
+        "recommend"
+      ],
+      "binary_cols": [
+        "gender",
+        "used_ai"
+      ],
+      "numeric_cols": [],
+      "feature_cols": [
+        "gender",
+        "field",
+        "used_ai",
+        "heard_simplify",
+        "job_status",
+        "difficulty",
+        "page",
+        "signup",
+        "useful",
+        "regular",
+        "recommend"
+      ]
+    },
+    "uniques": {
+      "field": [
+        "Arts",
+        "Business",
+        "Computer Science / Engineering",
+        "Data Analytic for Science",
+        "Design",
+        "Information Systems / Data Science",
+        "Natural Sciences",
+        "Social Sciences"
+      ],
+      "heard_simplify": [
+        "No",
+        "Not sure",
+        "Yes"
+      ],
+      "job_status": [
+        "Actively applying for full-time jobs",
+        "Actively applying for internships",
+        "Exploring opportunities but not applying yet",
+        "Not currently looking for jobs"
+      ],
+      "difficulty": [
+        "Extremely difficult",
+        "Neither easy nor difficult",
+        "Somewhat difficult",
+        "Somewhat easy"
+      ],
+      "page": [
+        "A",
+        "B",
+        "C"
+      ],
+      "signup": [
+        "0.0",
+        "1.0",
+        "2.0",
+        "3.0",
+        "4.0",
+        "5.0"
+      ],
+      "useful": [
+        "1.0",
+        "2.0",
+        "3.0",
+        "4.0",
+        "5.0"
+      ],
+      "regular": [
+        "1.0",
+        "2.0",
+        "3.0",
+        "4.0",
+        "5.0"
+      ],
+      "recommend": [
+        "0.0",
+        "1.0",
+        "2.0",
+        "3.0",
+        "4.0",
+        "5.0"
+      ],
+      "gender": [
+        "Female",
+        "Male"
+      ],
+      "used_ai": [
+        0,
+        1
+      ]
+    },
+    "marginals": {
+      "field": {
+        "n_unique_non_null": 8,
+        "unique_values": [
+          "Information Systems / Data Science",
+          "Computer Science / Engineering",
+          "Business",
+          "Design",
+          "Natural Sciences",
+          "Data Analytic for Science",
+          "Social Sciences",
+          "Arts"
+        ],
+        "counts": {
+          "Information Systems / Data Science": 63,
+          "Computer Science / Engineering": 14,
+          "Business": 6,
+          "Design": 4,
+          "Natural Sciences": 2,
+          "Data Analytic for Science": 2,
+          "Social Sciences": 2,
+          "Arts": 2
+        },
+        "proportions": {
+          "Information Systems / Data Science": 0.6632,
+          "Computer Science / Engineering": 0.1474,
+          "Business": 0.0632,
+          "Design": 0.0421,
+          "Natural Sciences": 0.0211,
+          "Data Analytic for Science": 0.0211,
+          "Social Sciences": 0.0211,
+          "Arts": 0.0211
+        }
+      },
+      "heard_simplify": {
+        "n_unique_non_null": 3,
+        "unique_values": [
+          "Yes",
+          "No",
+          "Not sure"
+        ],
+        "counts": {
+          "Yes": 66,
+          "No": 22,
+          "Not sure": 7
+        },
+        "proportions": {
+          "Yes": 0.6947,
+          "No": 0.2316,
+          "Not sure": 0.0737
+        }
+      },
+      "job_status": {
+        "n_unique_non_null": 4,
+        "unique_values": [
+          "Actively applying for internships",
+          "Actively applying for full-time jobs",
+          "Not currently looking for jobs",
+          "Exploring opportunities but not applying yet"
+        ],
+        "counts": {
+          "Actively applying for internships": 42,
+          "Actively applying for full-time jobs": 21,
+          "Not currently looking for jobs": 19,
+          "Exploring opportunities but not applying yet": 13
+        },
+        "proportions": {
+          "Actively applying for internships": 0.4421,
+          "Actively applying for full-time jobs": 0.2211,
+          "Not currently looking for jobs": 0.2,
+          "Exploring opportunities but not applying yet": 0.1368
+        }
+      },
+      "difficulty": {
+        "n_unique_non_null": 4,
+        "unique_values": [
+          "Somewhat difficult",
+          "Extremely difficult",
+          "Neither easy nor difficult",
+          "Somewhat easy"
+        ],
+        "counts": {
+          "Somewhat difficult": 46,
+          "Extremely difficult": 33,
+          "Neither easy nor difficult": 14,
+          "Somewhat easy": 2
+        },
+        "proportions": {
+          "Somewhat difficult": 0.4842,
+          "Extremely difficult": 0.3474,
+          "Neither easy nor difficult": 0.1474,
+          "Somewhat easy": 0.0211
+        }
+      },
+      "page": {
+        "n_unique_non_null": 3,
+        "unique_values": [
+          "A",
+          "B",
+          "C"
+        ],
+        "counts": {
+          "A": 47,
+          "B": 25,
+          "C": 23
+        },
+        "proportions": {
+          "A": 0.4947,
+          "B": 0.2632,
+          "C": 0.2421
+        }
+      },
+      "signup": {
+        "n_unique_non_null": 6,
+        "unique_values": [
+          "4.0",
+          "3.0",
+          "2.0",
+          "1.0",
+          "5.0",
+          "0.0"
+        ],
+        "counts": {
+          "4.0": 41,
+          "3.0": 24,
+          "2.0": 11,
+          "1.0": 11,
+          "5.0": 7,
+          "0.0": 1
+        },
+        "proportions": {
+          "4.0": 0.4316,
+          "3.0": 0.2526,
+          "2.0": 0.1158,
+          "1.0": 0.1158,
+          "5.0": 0.0737,
+          "0.0": 0.0105
+        }
+      },
+      "useful": {
+        "n_unique_non_null": 5,
+        "unique_values": [
+          "3.0",
+          "4.0",
+          "2.0",
+          "1.0",
+          "5.0"
+        ],
+        "counts": {
+          "3.0": 46,
+          "4.0": 19,
+          "2.0": 17,
+          "1.0": 10,
+          "5.0": 3
+        },
+        "proportions": {
+          "3.0": 0.4842,
+          "4.0": 0.2,
+          "2.0": 0.1789,
+          "1.0": 0.1053,
+          "5.0": 0.0316
+        }
+      },
+      "regular": {
+        "n_unique_non_null": 5,
+        "unique_values": [
+          "4.0",
+          "3.0",
+          "1.0",
+          "2.0",
+          "5.0"
+        ],
+        "counts": {
+          "4.0": 37,
+          "3.0": 28,
+          "1.0": 12,
+          "2.0": 9,
+          "5.0": 9
+        },
+        "proportions": {
+          "4.0": 0.3895,
+          "3.0": 0.2947,
+          "1.0": 0.1263,
+          "2.0": 0.0947,
+          "5.0": 0.0947
+        }
+      },
+      "recommend": {
+        "n_unique_non_null": 6,
+        "unique_values": [
+          "3.0",
+          "4.0",
+          "2.0",
+          "1.0",
+          "5.0",
+          "0.0"
+        ],
+        "counts": {
+          "3.0": 38,
+          "4.0": 28,
+          "2.0": 11,
+          "1.0": 11,
+          "5.0": 6,
+          "0.0": 1
+        },
+        "proportions": {
+          "3.0": 0.4,
+          "4.0": 0.2947,
+          "2.0": 0.1158,
+          "1.0": 0.1158,
+          "5.0": 0.0632,
+          "0.0": 0.0105
+        }
+      },
+      "gender": {
+        "n_unique_non_null": 2,
+        "unique_values": [
+          "Female",
+          "Male"
+        ],
+        "counts": {
+          "Female": 67,
+          "Male": 28
+        },
+        "proportions": {
+          "Female": 0.7053,
+          "Male": 0.2947
+        }
+      },
+      "used_ai": {
+        "n_unique_non_null": 2,
+        "unique_values": [
+          "1",
+          "0"
+        ],
+        "counts": {
+          "1": 79,
+          "0": 16
+        },
+        "proportions": {
+          "1": 0.8316,
+          "0": 0.1684
+        }
+      }
+    },
+    "conditional_target_rates": {
+      "field": {
+        "Arts": 4.0,
+        "Business": 3.1667,
+        "Computer Science / Engineering": 3.4286,
+        "Data Analytic for Science": 3.5,
+        "Design": 2.75,
+        "Information Systems / Data Science": 3.2381,
+        "Natural Sciences": 2.5,
+        "Social Sciences": 1.0
+      },
+      "heard_simplify": {
+        "No": 2.5455,
+        "Not sure": 2.4286,
+        "Yes": 3.5
+      },
+      "job_status": {
+        "Actively applying for full-time jobs": 2.6667,
+        "Actively applying for internships": 3.5714,
+        "Exploring opportunities but not applying yet": 3.0769,
+        "Not currently looking for jobs": 3.0526
+      },
+      "difficulty": {
+        "Extremely difficult": 3.2727,
+        "Neither easy nor difficult": 3.4286,
+        "Somewhat difficult": 3.0435,
+        "Somewhat easy": 4.0
+      },
+      "page": {
+        "A": 3.2979,
+        "B": 3.24,
+        "C": 2.9565
+      },
+      "useful": {
+        "1.0": 1.1,
+        "2.0": 2.7647,
+        "3.0": 3.3913,
+        "4.0": 4.1053,
+        "5.0": 4.0
+      },
+      "regular": {
+        "1.0": 1.5,
+        "2.0": 2.2222,
+        "3.0": 3.1071,
+        "4.0": 3.8108,
+        "5.0": 4.2222
+      },
+      "recommend": {
+        "0.0": 0.0,
+        "1.0": 1.5455,
+        "2.0": 2.5455,
+        "3.0": 3.3421,
+        "4.0": 3.8214,
+        "5.0": 4.1667
+      },
+      "gender": {
+        "Female": 3.2239,
+        "Male": 3.1429
+      },
+      "used_ai": {
+        "0": 2.6875,
+        "1": 3.3038
+      }
+    },
+    "correlations": {},
+    "logical_notes": [
+      "gender should only use its observed binary values",
+      "used_ai should only use its observed binary values",
+      "field should only use observed category labels",
+      "heard_simplify should only use observed category labels",
+      "job_status should only use observed category labels",
+      "difficulty should only use observed category labels",
+      "page should only use observed category labels",
+      "signup should only use observed category labels",
+      "useful should only use observed category labels",
+      "regular should only use observed category labels",
+      "Preserve the observed distribution across page",
+      "Preserve the relationship between page and signup"
+    ],
+    "detected_imbalances": {
+      "group_size": {
+        "group_col": "page",
+        "counts": {
+          "A": 47,
+          "B": 25,
+          "C": 23
+        },
+        "shares": {
+          "A": 0.4947,
+          "B": 0.2632,
+          "C": 0.2421
+        },
+        "max_share_diff": 0.2526,
+        "imbalance_ratio": 2.0435,
+        "status": "imbalanced"
+      },
+      "covariates": {
+        "field": {
+          "column": "field",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "Arts": 0.0213,
+              "Business": 0.0638,
+              "Computer Science / Engineering": 0.1489,
+              "Data Analytic for Science": 0.0213,
+              "Design": 0.0426,
+              "Information Systems / Data Science": 0.6596,
+              "Natural Sciences": 0.0213,
+              "Social Sciences": 0.0213
+            },
+            "B": {
+              "Arts": 0.0,
+              "Business": 0.04,
+              "Computer Science / Engineering": 0.12,
+              "Data Analytic for Science": 0.0,
+              "Design": 0.04,
+              "Information Systems / Data Science": 0.76,
+              "Natural Sciences": 0.0,
+              "Social Sciences": 0.04
+            },
+            "C": {
+              "Arts": 0.0435,
+              "Business": 0.087,
+              "Computer Science / Engineering": 0.1739,
+              "Data Analytic for Science": 0.0435,
+              "Design": 0.0435,
+              "Information Systems / Data Science": 0.5652,
+              "Natural Sciences": 0.0435,
+              "Social Sciences": 0.0
+            }
+          },
+          "share_gap_by_category": {
+            "Arts": 0.0435,
+            "Business": 0.047,
+            "Computer Science / Engineering": 0.0539,
+            "Data Analytic for Science": 0.0435,
+            "Design": 0.0035,
+            "Information Systems / Data Science": 0.1948,
+            "Natural Sciences": 0.0435,
+            "Social Sciences": 0.04
+          },
+          "max_category_share_gap": 0.1948,
+          "status": "imbalanced"
+        },
+        "heard_simplify": {
+          "column": "heard_simplify",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "No": 0.234,
+              "Not sure": 0.0638,
+              "Yes": 0.7021
+            },
+            "B": {
+              "No": 0.2,
+              "Not sure": 0.08,
+              "Yes": 0.72
+            },
+            "C": {
+              "No": 0.2609,
+              "Not sure": 0.087,
+              "Yes": 0.6522
+            }
+          },
+          "share_gap_by_category": {
+            "No": 0.0609,
+            "Not sure": 0.0231,
+            "Yes": 0.0678
+          },
+          "max_category_share_gap": 0.0678,
+          "status": "balanced"
+        },
+        "job_status": {
+          "column": "job_status",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "Actively applying for full-time jobs": 0.234,
+              "Actively applying for internships": 0.4468,
+              "Exploring opportunities but not applying yet": 0.1277,
+              "Not currently looking for jobs": 0.1915
+            },
+            "B": {
+              "Actively applying for full-time jobs": 0.2,
+              "Actively applying for internships": 0.48,
+              "Exploring opportunities but not applying yet": 0.08,
+              "Not currently looking for jobs": 0.24
+            },
+            "C": {
+              "Actively applying for full-time jobs": 0.2174,
+              "Actively applying for internships": 0.3913,
+              "Exploring opportunities but not applying yet": 0.2174,
+              "Not currently looking for jobs": 0.1739
+            }
+          },
+          "share_gap_by_category": {
+            "Actively applying for full-time jobs": 0.034,
+            "Actively applying for internships": 0.0887,
+            "Exploring opportunities but not applying yet": 0.1374,
+            "Not currently looking for jobs": 0.0661
+          },
+          "max_category_share_gap": 0.1374,
+          "status": "balanced"
+        },
+        "difficulty": {
+          "column": "difficulty",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "Extremely difficult": 0.3617,
+              "Neither easy nor difficult": 0.1489,
+              "Somewhat difficult": 0.4681,
+              "Somewhat easy": 0.0213
+            },
+            "B": {
+              "Extremely difficult": 0.32,
+              "Neither easy nor difficult": 0.12,
+              "Somewhat difficult": 0.56,
+              "Somewhat easy": 0.0
+            },
+            "C": {
+              "Extremely difficult": 0.3478,
+              "Neither easy nor difficult": 0.1739,
+              "Somewhat difficult": 0.4348,
+              "Somewhat easy": 0.0435
+            }
+          },
+          "share_gap_by_category": {
+            "Extremely difficult": 0.0417,
+            "Neither easy nor difficult": 0.0539,
+            "Somewhat difficult": 0.1252,
+            "Somewhat easy": 0.0435
+          },
+          "max_category_share_gap": 0.1252,
+          "status": "balanced"
+        },
+        "useful": {
+          "column": "useful",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "1.0": 0.1277,
+              "2.0": 0.1915,
+              "3.0": 0.5319,
+              "4.0": 0.1064,
+              "5.0": 0.0426
+            },
+            "B": {
+              "1.0": 0.08,
+              "2.0": 0.12,
+              "3.0": 0.44,
+              "4.0": 0.32,
+              "5.0": 0.04
+            },
+            "C": {
+              "1.0": 0.087,
+              "2.0": 0.2174,
+              "3.0": 0.4348,
+              "4.0": 0.2609,
+              "5.0": 0.0
+            }
+          },
+          "share_gap_by_category": {
+            "1.0": 0.0477,
+            "2.0": 0.0974,
+            "3.0": 0.0971,
+            "4.0": 0.2136,
+            "5.0": 0.0426
+          },
+          "max_category_share_gap": 0.2136,
+          "status": "imbalanced"
+        },
+        "regular": {
+          "column": "regular",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "1.0": 0.1489,
+              "2.0": 0.0851,
+              "3.0": 0.2553,
+              "4.0": 0.4043,
+              "5.0": 0.1064
+            },
+            "B": {
+              "1.0": 0.08,
+              "2.0": 0.12,
+              "3.0": 0.28,
+              "4.0": 0.44,
+              "5.0": 0.08
+            },
+            "C": {
+              "1.0": 0.1304,
+              "2.0": 0.087,
+              "3.0": 0.3913,
+              "4.0": 0.3043,
+              "5.0": 0.087
+            }
+          },
+          "share_gap_by_category": {
+            "1.0": 0.0689,
+            "2.0": 0.0349,
+            "3.0": 0.136,
+            "4.0": 0.1357,
+            "5.0": 0.0264
+          },
+          "max_category_share_gap": 0.136,
+          "status": "balanced"
+        },
+        "recommend": {
+          "column": "recommend",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "0.0": 0.0,
+              "1.0": 0.1064,
+              "2.0": 0.1277,
+              "3.0": 0.4043,
+              "4.0": 0.2979,
+              "5.0": 0.0638
+            },
+            "B": {
+              "0.0": 0.0,
+              "1.0": 0.12,
+              "2.0": 0.12,
+              "3.0": 0.32,
+              "4.0": 0.36,
+              "5.0": 0.08
+            },
+            "C": {
+              "0.0": 0.0435,
+              "1.0": 0.1304,
+              "2.0": 0.087,
+              "3.0": 0.4783,
+              "4.0": 0.2174,
+              "5.0": 0.0435
+            }
+          },
+          "share_gap_by_category": {
+            "0.0": 0.0435,
+            "1.0": 0.0241,
+            "2.0": 0.0407,
+            "3.0": 0.1583,
+            "4.0": 0.1426,
+            "5.0": 0.0365
+          },
+          "max_category_share_gap": 0.1583,
+          "status": "imbalanced"
+        },
+        "gender": {
+          "column": "gender",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "Female": 0.7234,
+              "Male": 0.2766
+            },
+            "B": {
+              "Female": 0.64,
+              "Male": 0.36
+            },
+            "C": {
+              "Female": 0.7391,
+              "Male": 0.2609
+            }
+          },
+          "share_gap_by_category": {
+            "Female": 0.0991,
+            "Male": 0.0991
+          },
+          "max_category_share_gap": 0.0991,
+          "status": "balanced"
+        },
+        "used_ai": {
+          "column": "used_ai",
+          "group_col": "page",
+          "shares_within_group": {
+            "A": {
+              "0": 0.1489,
+              "1": 0.8511
+            },
+            "B": {
+              "0": 0.2,
+              "1": 0.8
+            },
+            "C": {
+              "0": 0.1739,
+              "1": 0.8261
+            }
+          },
+          "share_gap_by_category": {
+            "0": 0.0511,
+            "1": 0.0511
+          },
+          "max_category_share_gap": 0.0511,
+          "status": "balanced"
+        }
+      }
+    },
+    "rebalancing_targets": {},
+    "treatment_effect_summary": {
+      "A": 3.2979,
+      "B": 3.24,
+      "C": 2.9565
+    },
+    "group_target_rates": {
+      "A": 3.2979,
+      "B": 3.24,
+      "C": 2.9565
+    }
+  },
+  "prompt": "You are generating synthetic tabular data.\n\nGoal:\nGenerate 200 NEW rows that statistically resemble the original dataset without copying existing rows.\n\nDataset columns:\n['gender', 'field', 'used_ai', 'heard_simplify', 'job_status', 'difficulty', 'page', 'signup', 'useful', 'regular', 'recommend']\n\n\n\nSchema:\n{\n  \"categorical_cols\": [\n    \"field\",\n    \"heard_simplify\",\n    \"job_status\",\n    \"difficulty\",\n    \"page\",\n    \"signup\",\n    \"useful\",\n    \"regular\",\n    \"recommend\"\n  ],\n  \"binary_cols\": [\n    \"gender\",\n    \"used_ai\"\n  ],\n  \"numeric_cols\": [],\n  \"feature_cols\": [\n    \"gender\",\n    \"field\",\n    \"used_ai\",\n    \"heard_simplify\",\n    \"job_status\",\n    \"difficulty\",\n    \"page\",\n    \"signup\",\n    \"useful\",\n    \"regular\",\n    \"recommend\"\n  ]\n}\n\nAllowed unique values for low-cardinality discrete columns:\n{\n  \"field\": [\n    \"Arts\",\n    \"Business\",\n    \"Computer Science / Engineering\",\n    \"Data Analytic for Science\",\n    \"Design\",\n    \"Information Systems / Data Science\",\n    \"Natural Sciences\",\n    \"Social Sciences\"\n  ],\n  \"heard_simplify\": [\n    \"No\",\n    \"Not sure\",\n    \"Yes\"\n  ],\n  \"job_status\": [\n    \"Actively applying for full-time jobs\",\n    \"Actively applying for internships\",\n    \"Exploring opportunities but not applying yet\",\n    \"Not currently looking for jobs\"\n  ],\n  \"difficulty\": [\n    \"Extremely difficult\",\n    \"Neither easy nor difficult\",\n    \"Somewhat difficult\",\n    \"Somewhat easy\"\n  ],\n  \"page\": [\n    \"A\",\n    \"B\",\n    \"C\"\n  ],\n  \"signup\": [\n    \"0.0\",\n    \"1.0\",\n    \"2.0\",\n    \"3.0\",\n    \"4.0\",\n    \"5.0\"\n  ],\n  \"useful\": [\n    \"1.0\",\n    \"2.0\",\n    \"3.0\",\n    \"4.0\",\n    \"5.0\"\n  ],\n  \"regular\": [\n    \"1.0\",\n    \"2.0\",\n    \"3.0\",\n    \"4.0\",\n    \"5.0\"\n  ],\n  \"recommend\": [\n    \"0.0\",\n    \"1.0\",\n    \"2.0\",\n    \"3.0\",\n    \"4.0\",\n    \"5.0\"\n  ],\n  \"gender\": [\n    \"Female\",\n    \"Male\"\n  ],\n  \"used_ai\": [\n    0,\n    1\n  ]\n}\n\nMarginal distributions and numeric summaries:\n{\n  \"field\": {\n    \"n_unique_non_null\": 8,\n    \"unique_values\": [\n      \"Information Systems / Data Science\",\n      \"Computer Science / Engineering\",\n      \"Business\",\n      \"Design\",\n      \"Natural Sciences\",\n      \"Data Analytic for Science\",\n      \"Social Sciences\",\n      \"Arts\"\n    ],\n    \"counts\": {\n      \"Information Systems / Data Science\": 63,\n      \"Computer Science / Engineering\": 14,\n      \"Business\": 6,\n      \"Design\": 4,\n      \"Natural Sciences\": 2,\n      \"Data Analytic for Science\": 2,\n      \"Social Sciences\": 2,\n      \"Arts\": 2\n    },\n    \"proportions\": {\n      \"Information Systems / Data Science\": 0.6632,\n      \"Computer Science / Engineering\": 0.1474,\n      \"Business\": 0.0632,\n      \"Design\": 0.0421,\n      \"Natural Sciences\": 0.0211,\n      \"Data Analytic for Science\": 0.0211,\n      \"Social Sciences\": 0.0211,\n      \"Arts\": 0.0211\n    }\n  },\n  \"heard_simplify\": {\n    \"n_unique_non_null\": 3,\n    \"unique_values\": [\n      \"Yes\",\n      \"No\",\n      \"Not sure\"\n    ],\n    \"counts\": {\n      \"Yes\": 66,\n      \"No\": 22,\n      \"Not sure\": 7\n    },\n    \"proportions\": {\n      \"Yes\": 0.6947,\n      \"No\": 0.2316,\n      \"Not sure\": 0.0737\n    }\n  },\n  \"job_status\": {\n    \"n_unique_non_null\": 4,\n    \"unique_values\": [\n      \"Actively applying for internships\",\n      \"Actively applying for full-time jobs\",\n      \"Not currently looking for jobs\",\n      \"Exploring opportunities but not applying yet\"\n    ],\n    \"counts\": {\n      \"Actively applying for internships\": 42,\n      \"Actively applying for full-time jobs\": 21,\n      \"Not currently looking for jobs\": 19,\n      \"Exploring opportunities but not applying yet\": 13\n    },\n    \"proportions\": {\n      \"Actively applying for internships\": 0.4421,\n      \"Actively applying for full-time jobs\": 0.2211,\n      \"Not currently looking for jobs\": 0.2,\n      \"Exploring opportunities but not applying yet\": 0.1368\n    }\n  },\n  \"difficulty\": {\n    \"n_unique_non_null\": 4,\n    \"unique_values\": [\n      \"Somewhat difficult\",\n      \"Extremely difficult\",\n      \"Neither easy nor difficult\",\n      \"Somewhat easy\"\n    ],\n    \"counts\": {\n      \"Somewhat difficult\": 46,\n      \"Extremely difficult\": 33,\n      \"Neither easy nor difficult\": 14,\n      \"Somewhat easy\": 2\n    },\n    \"proportions\": {\n      \"Somewhat difficult\": 0.4842,\n      \"Extremely difficult\": 0.3474,\n      \"Neither easy nor difficult\": 0.1474,\n      \"Somewhat easy\": 0.0211\n    }\n  },\n  \"page\": {\n    \"n_unique_non_null\": 3,\n    \"unique_values\": [\n      \"A\",\n      \"B\",\n      \"C\"\n    ],\n    \"counts\": {\n      \"A\": 47,\n      \"B\": 25,\n      \"C\": 23\n    },\n    \"proportions\": {\n      \"A\": 0.4947,\n      \"B\": 0.2632,\n      \"C\": 0.2421\n    }\n  },\n  \"signup\": {\n    \"n_unique_non_null\": 6,\n    \"unique_values\": [\n      \"4.0\",\n      \"3.0\",\n      \"2.0\",\n      \"1.0\",\n      \"5.0\",\n      \"0.0\"\n    ],\n    \"counts\": {\n      \"4.0\": 41,\n      \"3.0\": 24,\n      \"2.0\": 11,\n      \"1.0\": 11,\n      \"5.0\": 7,\n      \"0.0\": 1\n    },\n    \"proportions\": {\n      \"4.0\": 0.4316,\n      \"3.0\": 0.2526,\n      \"2.0\": 0.1158,\n      \"1.0\": 0.1158,\n      \"5.0\": 0.0737,\n      \"0.0\": 0.0105\n    }\n  },\n  \"useful\": {\n    \"n_unique_non_null\": 5,\n    \"unique_values\": [\n      \"3.0\",\n      \"4.0\",\n      \"2.0\",\n      \"1.0\",\n      \"5.0\"\n    ],\n    \"counts\": {\n      \"3.0\": 46,\n      \"4.0\": 19,\n      \"2.0\": 17,\n      \"1.0\": 10,\n      \"5.0\": 3\n    },\n    \"proportions\": {\n      \"3.0\": 0.4842,\n      \"4.0\": 0.2,\n      \"2.0\": 0.1789,\n      \"1.0\": 0.1053,\n      \"5.0\": 0.0316\n    }\n  },\n  \"regular\": {\n    \"n_unique_non_null\": 5,\n    \"unique_values\": [\n      \"4.0\",\n      \"3.0\",\n      \"1.0\",\n      \"2.0\",\n      \"5.0\"\n    ],\n    \"counts\": {\n      \"4.0\": 37,\n      \"3.0\": 28,\n      \"1.0\": 12,\n      \"2.0\": 9,\n      \"5.0\": 9\n    },\n    \"proportions\": {\n      \"4.0\": 0.3895,\n      \"3.0\": 0.2947,\n      \"1.0\": 0.1263,\n      \"2.0\": 0.0947,\n      \"5.0\": 0.0947\n    }\n  },\n  \"recommend\": {\n    \"n_unique_non_null\": 6,\n    \"unique_values\": [\n      \"3.0\",\n      \"4.0\",\n      \"2.0\",\n      \"1.0\",\n      \"5.0\",\n      \"0.0\"\n    ],\n    \"counts\": {\n      \"3.0\": 38,\n      \"4.0\": 28,\n      \"2.0\": 11,\n      \"1.0\": 11,\n      \"5.0\": 6,\n      \"0.0\": 1\n    },\n    \"proportions\": {\n      \"3.0\": 0.4,\n      \"4.0\": 0.2947,\n      \"2.0\": 0.1158,\n      \"1.0\": 0.1158,\n      \"5.0\": 0.0632,\n      \"0.0\": 0.0105\n    }\n  },\n  \"gender\": {\n    \"n_unique_non_null\": 2,\n    \"unique_values\": [\n      \"Female\",\n      \"Male\"\n    ],\n    \"counts\": {\n      \"Female\": 67,\n      \"Male\": 28\n    },\n    \"proportions\": {\n      \"Female\": 0.7053,\n      \"Male\": 0.2947\n    }\n  },\n  \"used_ai\": {\n    \"n_unique_non_null\": 2,\n    \"unique_values\": [\n      \"1\",\n      \"0\"\n    ],\n    \"counts\": {\n      \"1\": 79,\n      \"0\": 16\n    },\n    \"proportions\": {\n      \"1\": 0.8316,\n      \"0\": 0.1684\n    }\n  }\n}\n\nConditional target rates to preserve:\n{\n  \"field\": {\n    \"Arts\": 4.0,\n    \"Business\": 3.1667,\n    \"Computer Science / Engineering\": 3.4286,\n    \"Data Analytic for Science\": 3.5,\n    \"Design\": 2.75,\n    \"Information Systems / Data Science\": 3.2381,\n    \"Natural Sciences\": 2.5,\n    \"Social Sciences\": 1.0\n  },\n  \"heard_simplify\": {\n    \"No\": 2.5455,\n    \"Not sure\": 2.4286,\n    \"Yes\": 3.5\n  },\n  \"job_status\": {\n    \"Actively applying for full-time jobs\": 2.6667,\n    \"Actively applying for internships\": 3.5714,\n    \"Exploring opportunities but not applying yet\": 3.0769,\n    \"Not currently looking for jobs\": 3.0526\n  },\n  \"difficulty\": {\n    \"Extremely difficult\": 3.2727,\n    \"Neither easy nor difficult\": 3.4286,\n    \"Somewhat difficult\": 3.0435,\n    \"Somewhat easy\": 4.0\n  },\n  \"page\": {\n    \"A\": 3.2979,\n    \"B\": 3.24,\n    \"C\": 2.9565\n  },\n  \"useful\": {\n    \"1.0\": 1.1,\n    \"2.0\": 2.7647,\n    \"3.0\": 3.3913,\n    \"4.0\": 4.1053,\n    \"5.0\": 4.0\n  },\n  \"regular\": {\n    \"1.0\": 1.5,\n    \"2.0\": 2.2222,\n    \"3.0\": 3.1071,\n    \"4.0\": 3.8108,\n    \"5.0\": 4.2222\n  },\n  \"recommend\": {\n    \"0.0\": 0.0,\n    \"1.0\": 1.5455,\n    \"2.0\": 2.5455,\n    \"3.0\": 3.3421,\n    \"4.0\": 3.8214,\n    \"5.0\": 4.1667\n  },\n  \"gender\": {\n    \"Female\": 3.2239,\n    \"Male\": 3.1429\n  },\n  \"used_ai\": {\n    \"0\": 2.6875,\n    \"1\": 3.3038\n  }\n}\n\nImportant numeric correlations to roughly preserve:\n{}\n\nLogical constraints:\n[\n  \"gender should only use its observed binary values\",\n  \"used_ai should only use its observed binary values\",\n  \"field should only use observed category labels\",\n  \"heard_simplify should only use observed category labels\",\n  \"job_status should only use observed category labels\",\n  \"difficulty should only use observed category labels\",\n  \"page should only use observed category labels\",\n  \"signup should only use observed category labels\",\n  \"useful should only use observed category labels\",\n  \"regular should only use observed category labels\",\n  \"Preserve the observed distribution across page\",\n  \"Preserve the relationship between page and signup\"\n]\n\nTarget column:\n- The outcome/target column is signup\n- Preserve its relationship with the other columns\n- Do not directly rebalance the target column unless explicitly instructed\n\nTreatment relationship:\n- The treatment/grouping column is page\n- Preserve a realistic relationship between page and signup\n- Observed target rates by page:\n{\n  \"A\": 3.2979,\n  \"B\": 3.24,\n  \"C\": 2.9565\n}\n\nBalance handling mode: preserve\n\nInstructions:\n- Preserve the original observed structure in the new rows.\n- If the source dataset is already balanced, keep it balanced.\n- If the source dataset has imbalance, do not intentionally correct it.\n- Match the observed group-size distribution and the observed within-group covariate distributions as closely as possible.\n- Keep the relationship between predictors, page, and signup realistic.\n\nDetected imbalance summary:\n{\n  \"group_size\": {\n    \"group_col\": \"page\",\n    \"counts\": {\n      \"A\": 47,\n      \"B\": 25,\n      \"C\": 23\n    },\n    \"shares\": {\n      \"A\": 0.4947,\n      \"B\": 0.2632,\n      \"C\": 0.2421\n    },\n    \"max_share_diff\": 0.2526,\n    \"imbalance_ratio\": 2.0435,\n    \"status\": \"imbalanced\"\n  },\n  \"covariates\": {\n    \"field\": {\n      \"column\": \"field\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"Arts\": 0.0213,\n          \"Business\": 0.0638,\n          \"Computer Science / Engineering\": 0.1489,\n          \"Data Analytic for Science\": 0.0213,\n          \"Design\": 0.0426,\n          \"Information Systems / Data Science\": 0.6596,\n          \"Natural Sciences\": 0.0213,\n          \"Social Sciences\": 0.0213\n        },\n        \"B\": {\n          \"Arts\": 0.0,\n          \"Business\": 0.04,\n          \"Computer Science / Engineering\": 0.12,\n          \"Data Analytic for Science\": 0.0,\n          \"Design\": 0.04,\n          \"Information Systems / Data Science\": 0.76,\n          \"Natural Sciences\": 0.0,\n          \"Social Sciences\": 0.04\n        },\n        \"C\": {\n          \"Arts\": 0.0435,\n          \"Business\": 0.087,\n          \"Computer Science / Engineering\": 0.1739,\n          \"Data Analytic for Science\": 0.0435,\n          \"Design\": 0.0435,\n          \"Information Systems / Data Science\": 0.5652,\n          \"Natural Sciences\": 0.0435,\n          \"Social Sciences\": 0.0\n        }\n      },\n      \"share_gap_by_category\": {\n        \"Arts\": 0.0435,\n        \"Business\": 0.047,\n        \"Computer Science / Engineering\": 0.0539,\n        \"Data Analytic for Science\": 0.0435,\n        \"Design\": 0.0035,\n        \"Information Systems / Data Science\": 0.1948,\n        \"Natural Sciences\": 0.0435,\n        \"Social Sciences\": 0.04\n      },\n      \"max_category_share_gap\": 0.1948,\n      \"status\": \"imbalanced\"\n    },\n    \"heard_simplify\": {\n      \"column\": \"heard_simplify\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"No\": 0.234,\n          \"Not sure\": 0.0638,\n          \"Yes\": 0.7021\n        },\n        \"B\": {\n          \"No\": 0.2,\n          \"Not sure\": 0.08,\n          \"Yes\": 0.72\n        },\n        \"C\": {\n          \"No\": 0.2609,\n          \"Not sure\": 0.087,\n          \"Yes\": 0.6522\n        }\n      },\n      \"share_gap_by_category\": {\n        \"No\": 0.0609,\n        \"Not sure\": 0.0231,\n        \"Yes\": 0.0678\n      },\n      \"max_category_share_gap\": 0.0678,\n      \"status\": \"balanced\"\n    },\n    \"job_status\": {\n      \"column\": \"job_status\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"Actively applying for full-time jobs\": 0.234,\n          \"Actively applying for internships\": 0.4468,\n          \"Exploring opportunities but not applying yet\": 0.1277,\n          \"Not currently looking for jobs\": 0.1915\n        },\n        \"B\": {\n          \"Actively applying for full-time jobs\": 0.2,\n          \"Actively applying for internships\": 0.48,\n          \"Exploring opportunities but not applying yet\": 0.08,\n          \"Not currently looking for jobs\": 0.24\n        },\n        \"C\": {\n          \"Actively applying for full-time jobs\": 0.2174,\n          \"Actively applying for internships\": 0.3913,\n          \"Exploring opportunities but not applying yet\": 0.2174,\n          \"Not currently looking for jobs\": 0.1739\n        }\n      },\n      \"share_gap_by_category\": {\n        \"Actively applying for full-time jobs\": 0.034,\n        \"Actively applying for internships\": 0.0887,\n        \"Exploring opportunities but not applying yet\": 0.1374,\n        \"Not currently looking for jobs\": 0.0661\n      },\n      \"max_category_share_gap\": 0.1374,\n      \"status\": \"balanced\"\n    },\n    \"difficulty\": {\n      \"column\": \"difficulty\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"Extremely difficult\": 0.3617,\n          \"Neither easy nor difficult\": 0.1489,\n          \"Somewhat difficult\": 0.4681,\n          \"Somewhat easy\": 0.0213\n        },\n        \"B\": {\n          \"Extremely difficult\": 0.32,\n          \"Neither easy nor difficult\": 0.12,\n          \"Somewhat difficult\": 0.56,\n          \"Somewhat easy\": 0.0\n        },\n        \"C\": {\n          \"Extremely difficult\": 0.3478,\n          \"Neither easy nor difficult\": 0.1739,\n          \"Somewhat difficult\": 0.4348,\n          \"Somewhat easy\": 0.0435\n        }\n      },\n      \"share_gap_by_category\": {\n        \"Extremely difficult\": 0.0417,\n        \"Neither easy nor difficult\": 0.0539,\n        \"Somewhat difficult\": 0.1252,\n        \"Somewhat easy\": 0.0435\n      },\n      \"max_category_share_gap\": 0.1252,\n      \"status\": \"balanced\"\n    },\n    \"useful\": {\n      \"column\": \"useful\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"1.0\": 0.1277,\n          \"2.0\": 0.1915,\n          \"3.0\": 0.5319,\n          \"4.0\": 0.1064,\n          \"5.0\": 0.0426\n        },\n        \"B\": {\n          \"1.0\": 0.08,\n          \"2.0\": 0.12,\n          \"3.0\": 0.44,\n          \"4.0\": 0.32,\n          \"5.0\": 0.04\n        },\n        \"C\": {\n          \"1.0\": 0.087,\n          \"2.0\": 0.2174,\n          \"3.0\": 0.4348,\n          \"4.0\": 0.2609,\n          \"5.0\": 0.0\n        }\n      },\n      \"share_gap_by_category\": {\n        \"1.0\": 0.0477,\n        \"2.0\": 0.0974,\n        \"3.0\": 0.0971,\n        \"4.0\": 0.2136,\n        \"5.0\": 0.0426\n      },\n      \"max_category_share_gap\": 0.2136,\n      \"status\": \"imbalanced\"\n    },\n    \"regular\": {\n      \"column\": \"regular\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"1.0\": 0.1489,\n          \"2.0\": 0.0851,\n          \"3.0\": 0.2553,\n          \"4.0\": 0.4043,\n          \"5.0\": 0.1064\n        },\n        \"B\": {\n          \"1.0\": 0.08,\n          \"2.0\": 0.12,\n          \"3.0\": 0.28,\n          \"4.0\": 0.44,\n          \"5.0\": 0.08\n        },\n        \"C\": {\n          \"1.0\": 0.1304,\n          \"2.0\": 0.087,\n          \"3.0\": 0.3913,\n          \"4.0\": 0.3043,\n          \"5.0\": 0.087\n        }\n      },\n      \"share_gap_by_category\": {\n        \"1.0\": 0.0689,\n        \"2.0\": 0.0349,\n        \"3.0\": 0.136,\n        \"4.0\": 0.1357,\n        \"5.0\": 0.0264\n      },\n      \"max_category_share_gap\": 0.136,\n      \"status\": \"balanced\"\n    },\n    \"recommend\": {\n      \"column\": \"recommend\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"0.0\": 0.0,\n          \"1.0\": 0.1064,\n          \"2.0\": 0.1277,\n          \"3.0\": 0.4043,\n          \"4.0\": 0.2979,\n          \"5.0\": 0.0638\n        },\n        \"B\": {\n          \"0.0\": 0.0,\n          \"1.0\": 0.12,\n          \"2.0\": 0.12,\n          \"3.0\": 0.32,\n          \"4.0\": 0.36,\n          \"5.0\": 0.08\n        },\n        \"C\": {\n          \"0.0\": 0.0435,\n          \"1.0\": 0.1304,\n          \"2.0\": 0.087,\n          \"3.0\": 0.4783,\n          \"4.0\": 0.2174,\n          \"5.0\": 0.0435\n        }\n      },\n      \"share_gap_by_category\": {\n        \"0.0\": 0.0435,\n        \"1.0\": 0.0241,\n        \"2.0\": 0.0407,\n        \"3.0\": 0.1583,\n        \"4.0\": 0.1426,\n        \"5.0\": 0.0365\n      },\n      \"max_category_share_gap\": 0.1583,\n      \"status\": \"imbalanced\"\n    },\n    \"gender\": {\n      \"column\": \"gender\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"Female\": 0.7234,\n          \"Male\": 0.2766\n        },\n        \"B\": {\n          \"Female\": 0.64,\n          \"Male\": 0.36\n        },\n        \"C\": {\n          \"Female\": 0.7391,\n          \"Male\": 0.2609\n        }\n      },\n      \"share_gap_by_category\": {\n        \"Female\": 0.0991,\n        \"Male\": 0.0991\n      },\n      \"max_category_share_gap\": 0.0991,\n      \"status\": \"balanced\"\n    },\n    \"used_ai\": {\n      \"column\": \"used_ai\",\n      \"group_col\": \"page\",\n      \"shares_within_group\": {\n        \"A\": {\n          \"0\": 0.1489,\n          \"1\": 0.8511\n        },\n        \"B\": {\n          \"0\": 0.2,\n          \"1\": 0.8\n        },\n        \"C\": {\n          \"0\": 0.1739,\n          \"1\": 0.8261\n        }\n      },\n      \"share_gap_by_category\": {\n        \"0\": 0.0511,\n        \"1\": 0.0511\n      },\n      \"max_category_share_gap\": 0.0511,\n      \"status\": \"balanced\"\n    }\n  }\n}\n\nInstructions:\n1. Generate exactly 200 new rows.\n2. Do not copy any existing row.\n3. For low-cardinality discrete columns, only use observed category labels.\n4. Keep numeric values plausible and within observed ranges unless a small amount of realistic variation is needed.\n5. Preserve the important relationships in the summary above.\n6. Output ONLY CSV with a header row.\n7. Output only the new rows, not the original rows."
+}

@@ -1,0 +1,99 @@
+person_id,group,data_source,gender,edu_level,year_in_school,age,job_status,field,difficulty,time_per_week,used_ai,heard_simplify,page,is_treatment,signup,useful,regular,recommend
+1,AC,human,Female,Master’s student,Master’s student (1st year),23,Exploring opportunities but not applying yet,Information Systems / Data Science,Neither easy nor difficult,0-2 hours,No,Yes,A,0,2.0,3.0,3.0,2.0
+1,AC,human,Female,Master’s student,Master’s student (1st year),23,Exploring opportunities but not applying yet,Information Systems / Data Science,Neither easy nor difficult,0-2 hours,No,Yes,C,1,3.0,3.0,3.0,3.0
+2,AB,human,Male,Other,PhD year 3+,38,Not currently looking for jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,No,Not sure,A,0,3.0,,3.0,3.0
+2,AB,human,Male,Other,PhD year 3+,38,Not currently looking for jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,No,Not sure,B,1,3.0,3.0,3.0,3.0
+3,AC,human,Male,Master’s student,Master’s student (1st year),31,Actively applying for internships,Computer Science / Engineering,Somewhat difficult,3-5 hours,Yes,Yes,A,0,4.0,3.0,4.0,3.0
+3,AC,human,Male,Master’s student,Master’s student (1st year),31,Actively applying for internships,Computer Science / Engineering,Somewhat difficult,3-5 hours,Yes,Yes,C,1,4.0,3.0,4.0,3.0
+4,AB,human,Male,Master’s student,Master’s student (1st year),24,Actively applying for internships,Computer Science / Engineering,Extremely difficult,3-5 hours,Yes,Yes,A,0,4.0,3.0,4.0,4.0
+4,AB,human,Male,Master’s student,Master’s student (1st year),24,Actively applying for internships,Computer Science / Engineering,Extremely difficult,3-5 hours,Yes,Yes,B,1,4.0,3.0,4.0,4.0
+5,AC,human,Male,Master’s student,Master’s student (1st year),23,Exploring opportunities but not applying yet,Information Systems / Data Science,Somewhat difficult,0-2 hours,No,No,A,0,0.0,,0.0,0.0
+5,AC,human,Male,Master’s student,Master’s student (1st year),23,Exploring opportunities but not applying yet,Information Systems / Data Science,Somewhat difficult,0-2 hours,No,No,C,1,0.0,1.0,1.0,0.0
+6,AB,human,Female,Master’s student,Master’s student (1st year),22,Not currently looking for jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,No,A,0,1.0,1.0,1.0,1.0
+6,AB,human,Female,Master’s student,Master’s student (1st year),22,Not currently looking for jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,No,B,1,1.0,1.0,1.0,1.0
+7,AC,human,Male,Master’s student,Master’s student (1st year),23,Actively applying for full-time jobs,Business,Somewhat difficult,3-5 hours,Yes,No,A,0,3.0,2.0,3.0,3.0
+7,AC,human,Male,Master’s student,Master’s student (1st year),23,Actively applying for full-time jobs,Business,Somewhat difficult,3-5 hours,Yes,No,C,1,3.0,2.0,3.0,4.0
+8,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Business,Extremely difficult,6-8 hours,Yes,Yes,A,0,3.0,3.0,3.0,4.0
+8,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Business,Extremely difficult,6-8 hours,Yes,Yes,B,1,3.0,4.0,4.0,4.0
+9,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,6-8 hours,Yes,Yes,A,0,1.0,2.0,2.0,2.0
+9,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,6-8 hours,Yes,Yes,C,1,2.0,2.0,3.0,2.0
+10,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,3-5 hours,Yes,Yes,A,0,4.0,3.0,1.0,2.0
+10,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,3-5 hours,Yes,Yes,B,1,4.0,4.0,2.0,3.0
+11,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,A,0,4.0,3.0,4.0,3.0
+11,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,C,1,4.0,3.0,4.0,3.0
+12,AB,human,Female,Master’s student,Master’s student (1st year),22,Not currently looking for jobs,Information Systems / Data Science,Extremely difficult,3-5 hours,Yes,Yes,A,0,4.0,3.0,4.0,4.0
+12,AB,human,Female,Master’s student,Master’s student (1st year),22,Not currently looking for jobs,Information Systems / Data Science,Extremely difficult,3-5 hours,Yes,Yes,B,1,2.0,3.0,4.0,1.0
+13,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,A,0,4.0,3.0,4.0,4.0
+13,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,B,1,4.0,3.0,4.0,4.0
+14,AC,human,Female,Master’s student,Master’s student (1st year),22,Actively applying for internships,Computer Science / Engineering,Extremely difficult,3-5 hours,No,No,A,0,4.0,4.0,4.0,4.0
+14,AC,human,Female,Master’s student,Master’s student (1st year),22,Actively applying for internships,Computer Science / Engineering,Extremely difficult,3-5 hours,No,No,C,1,3.0,3.0,3.0,3.0
+15,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,More than 8 hours,Yes,Yes,A,0,5.0,4.0,3.0,3.0
+15,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,More than 8 hours,Yes,Yes,C,1,5.0,4.0,3.0,3.0
+16,AB,human,Female,Master’s student,Master’s student (1st year),24,Exploring opportunities but not applying yet,Information Systems / Data Science,Somewhat difficult,0-2 hours,No,Yes,A,0,3.0,3.0,3.0,3.0
+16,AB,human,Female,Master’s student,Master’s student (1st year),24,Exploring opportunities but not applying yet,Information Systems / Data Science,Somewhat difficult,0-2 hours,No,Yes,B,1,4.0,4.0,4.0,4.0
+17,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,More than 8 hours,Yes,Yes,A,0,4.0,3.0,4.0,4.0
+17,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,More than 8 hours,Yes,Yes,B,1,4.0,4.0,4.0,4.0
+18,AC,human,Male,Master’s student,Master’s student (1st year),22,Actively applying for internships,Business,Extremely difficult,6-8 hours,Yes,Yes,A,0,3.0,3.0,4.0,4.0
+18,AC,human,Male,Master’s student,Master’s student (1st year),22,Actively applying for internships,Business,Extremely difficult,6-8 hours,Yes,Yes,C,1,4.0,4.0,4.0,4.0
+19,AB,human,Male,Master’s student,Master’s student (1st year),31,Actively applying for internships,Computer Science / Engineering,Neither easy nor difficult,3-5 hours,Yes,No,A,0,4.0,3.0,3.0,3.0
+19,AB,human,Male,Master’s student,Master’s student (1st year),31,Actively applying for internships,Computer Science / Engineering,Neither easy nor difficult,3-5 hours,Yes,No,B,1,4.0,3.0,4.0,4.0
+20,AC,human,Female,Master’s student,,30,Not currently looking for jobs,Natural Sciences,Somewhat difficult,3-5 hours,Yes,Not sure,A,0,4.0,3.0,3.0,4.0
+20,AC,human,Female,Master’s student,,30,Not currently looking for jobs,Natural Sciences,Somewhat difficult,3-5 hours,Yes,Not sure,C,1,1.0,3.0,3.0,3.0
+21,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Design,Extremely difficult,3-5 hours,Yes,Yes,A,0,4.0,3.0,4.0,3.0
+21,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Design,Extremely difficult,3-5 hours,Yes,Yes,C,1,3.0,3.0,4.0,3.0
+22,AB,human,Male,Master’s student,Master’s student (1st year),24,Actively applying for internships,Information Systems / Data Science,Extremely difficult,3-5 hours,No,Yes,A,0,4.0,3.0,5.0,3.0
+22,AB,human,Male,Master’s student,Master’s student (1st year),24,Actively applying for internships,Information Systems / Data Science,Extremely difficult,3-5 hours,No,Yes,B,1,4.0,4.0,5.0,3.0
+23,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,More than 8 hours,Yes,Yes,A,0,2.0,1.0,1.0,1.0
+23,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,More than 8 hours,Yes,Yes,B,1,3.0,2.0,1.0,1.0
+24,AC,human,Female,Master’s student,Undergraduate 2nd year,24,Actively applying for full-time jobs,Information Systems / Data Science,Neither easy nor difficult,6-8 hours,Yes,Yes,A,0,3.0,3.0,4.0,2.0
+24,AC,human,Female,Master’s student,Undergraduate 2nd year,24,Actively applying for full-time jobs,Information Systems / Data Science,Neither easy nor difficult,6-8 hours,Yes,Yes,C,1,2.0,3.0,2.0,3.0
+25,AB,human,Female,Master’s student,Master’s student (2nd year or above),25,Actively applying for full-time jobs,Computer Science / Engineering,Somewhat difficult,6-8 hours,Yes,Yes,A,0,4.0,5.0,4.0,5.0
+25,AB,human,Female,Master’s student,Master’s student (2nd year or above),25,Actively applying for full-time jobs,Computer Science / Engineering,Somewhat difficult,6-8 hours,Yes,Yes,B,1,4.0,5.0,4.0,5.0
+26,AC,human,Male,Master’s student,Master’s student (1st year),25,Actively applying for full-time jobs,Data Analytic for Science,Somewhat difficult,6-8 hours,Yes,Yes,A,0,4.0,5.0,5.0,5.0
+26,AC,human,Male,Master’s student,Master’s student (1st year),25,Actively applying for full-time jobs,Data Analytic for Science,Somewhat difficult,6-8 hours,Yes,Yes,C,1,3.0,3.0,3.0,1.0
+27,AC,human,Female,Master’s student,Master’s student (2nd year or above),28,Not currently looking for jobs,Information Systems / Data Science,Extremely difficult,0-2 hours,No,No,A,0,2.0,3.0,1.0,3.0
+27,AC,human,Female,Master’s student,Master’s student (2nd year or above),28,Not currently looking for jobs,Information Systems / Data Science,Extremely difficult,0-2 hours,No,No,C,1,2.0,3.0,2.0,3.0
+28,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for full-time jobs,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,No,A,0,3.0,3.0,3.0,3.0
+28,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for full-time jobs,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,No,B,1,3.0,3.0,3.0,3.0
+29,AB,human,Male,Master’s student,Master’s student (1st year),24,Actively applying for internships,Information Systems / Data Science,Extremely difficult,3-5 hours,Yes,Yes,A,0,4.0,3.0,4.0,2.0
+29,AB,human,Male,Master’s student,Master’s student (1st year),24,Actively applying for internships,Information Systems / Data Science,Extremely difficult,3-5 hours,Yes,Yes,B,1,4.0,4.0,3.0,3.0
+30,AC,human,Female,Master’s student,Master’s student (2nd year or above),28,Actively applying for full-time jobs,Information Systems / Data Science,Extremely difficult,3-5 hours,Yes,No,A,0,3.0,2.0,4.0,3.0
+30,AC,human,Female,Master’s student,Master’s student (2nd year or above),28,Actively applying for full-time jobs,Information Systems / Data Science,Extremely difficult,3-5 hours,Yes,No,C,1,3.0,,3.0,3.0
+31,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,A,0,5.0,2.0,5.0,4.0
+31,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,C,1,5.0,4.0,5.0,4.0
+32,AB,human,Male,Master’s student,Master’s student (1st year),21,Not currently looking for jobs,Information Systems / Data Science,Neither easy nor difficult,0-2 hours,Yes,Yes,A,0,5.0,4.0,4.0,3.0
+32,AB,human,Male,Master’s student,Master’s student (1st year),21,Not currently looking for jobs,Information Systems / Data Science,Neither easy nor difficult,0-2 hours,Yes,Yes,B,1,4.0,3.0,3.0,3.0
+33,AC,human,Female,Master’s student,Master’s student (1st year),26,Not currently looking for jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,Yes,A,0,5.0,3.0,5.0,5.0
+33,AC,human,Female,Master’s student,Master’s student (1st year),26,Not currently looking for jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,Yes,C,1,3.0,2.0,5.0,4.0
+34,AB,human,Female,Master’s student,Master’s student (2nd year or above),24,Actively applying for full-time jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,Yes,A,0,1.0,1.0,1.0,1.0
+34,AB,human,Female,Master’s student,Master’s student (2nd year or above),24,Actively applying for full-time jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,Yes,B,1,3.0,2.0,2.0,2.0
+35,AB,human,Female,Master’s student,Master’s student (2nd year or above),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,More than 8 hours,Yes,Yes,A,0,4.0,3.0,3.0,4.0
+35,AB,human,Female,Master’s student,Master’s student (2nd year or above),23,Actively applying for internships,Information Systems / Data Science,Extremely difficult,More than 8 hours,Yes,Yes,B,1,4.0,4.0,4.0,5.0
+36,AC,human,Female,Master’s student,Master’s student (1st year),23,Exploring opportunities but not applying yet,Information Systems / Data Science,Extremely difficult,6-8 hours,Yes,Yes,A,0,4.0,3.0,4.0,3.0
+36,AC,human,Female,Master’s student,Master’s student (1st year),23,Exploring opportunities but not applying yet,Information Systems / Data Science,Extremely difficult,6-8 hours,Yes,Yes,C,1,4.0,4.0,4.0,3.0
+37,AB,human,Male,Master’s student,Master’s student (1st year),22,Actively applying for full-time jobs,Social Sciences,Somewhat difficult,3-5 hours,No,Not sure,A,0,1.0,1.0,1.0,3.0
+37,AB,human,Male,Master’s student,Master’s student (1st year),22,Actively applying for full-time jobs,Social Sciences,Somewhat difficult,3-5 hours,No,Not sure,B,1,1.0,2.0,3.0,2.0
+38,AC,human,Female,Master’s student,Master’s student (1st year),23,Not currently looking for jobs,Arts,Somewhat easy,0-2 hours,Yes,Yes,A,0,4.0,3.0,4.0,3.0
+38,AC,human,Female,Master’s student,Master’s student (1st year),23,Not currently looking for jobs,Arts,Somewhat easy,0-2 hours,Yes,Yes,C,1,4.0,4.0,3.0,4.0
+39,AC,human,Female,Master’s student,Master’s student (1st year),22,Actively applying for internships,Information Systems / Data Science,Extremely difficult,6-8 hours,Yes,Yes,A,0,1.0,1.0,1.0,1.0
+39,AC,human,Female,Master’s student,Master’s student (1st year),22,Actively applying for internships,Information Systems / Data Science,Extremely difficult,6-8 hours,Yes,Yes,C,1,1.0,1.0,1.0,1.0
+40,AB,human,Female,Master’s student,Master’s student (1st year),31,Exploring opportunities but not applying yet,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,Yes,A,0,3.0,2.0,4.0,4.0
+40,AB,human,Female,Master’s student,Master’s student (1st year),31,Exploring opportunities but not applying yet,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,Yes,B,1,3.0,3.0,4.0,4.0
+41,AC,human,Female,Master’s student,Master’s student (1st year),23,Exploring opportunities but not applying yet,Computer Science / Engineering,Neither easy nor difficult,3-5 hours,Yes,Not sure,A,0,3.0,4.0,2.0,4.0
+41,AC,human,Female,Master’s student,Master’s student (1st year),23,Exploring opportunities but not applying yet,Computer Science / Engineering,Neither easy nor difficult,3-5 hours,Yes,Not sure,C,1,4.0,3.0,4.0,2.0
+42,AB,human,Female,Master’s student,Master’s student (1st year),22,Actively applying for internships,Design,Somewhat difficult,3-5 hours,Yes,No,A,0,2.0,2.0,3.0,3.0
+42,AB,human,Female,Master’s student,Master’s student (1st year),22,Actively applying for internships,Design,Somewhat difficult,3-5 hours,Yes,No,B,1,2.0,1.0,2.0,3.0
+43,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,A,0,5.0,2.0,4.0,4.0
+43,AB,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for internships,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,B,1,4.0,3.0,4.0,4.0
+44,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for full-time jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,Yes,A,0,4.0,4.0,4.0,4.0
+44,AC,human,Female,Master’s student,Master’s student (1st year),23,Actively applying for full-time jobs,Information Systems / Data Science,Somewhat difficult,0-2 hours,Yes,Yes,C,1,4.0,4.0,4.0,5.0
+45,AB,human,Male,Master’s student,Master’s student (2nd year or above),28,Actively applying for full-time jobs,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,A,0,2.0,2.0,2.0,2.0
+45,AB,human,Male,Master’s student,Master’s student (2nd year or above),28,Actively applying for full-time jobs,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,B,1,3.0,3.0,3.0,3.0
+46,AC,human,Female,Master’s student,Master’s student (1st year),42,Exploring opportunities but not applying yet,Information Systems / Data Science,Neither easy nor difficult,0-2 hours,Yes,No,A,0,4.0,2.0,3.0,3.0
+46,AC,human,Female,Master’s student,Master’s student (1st year),42,Exploring opportunities but not applying yet,Information Systems / Data Science,Neither easy nor difficult,0-2 hours,Yes,No,C,1,3.0,2.0,3.0,3.0
+47,AC,human,Male,Master’s student,Master’s student (1st year),29,Actively applying for full-time jobs,Computer Science / Engineering,Somewhat difficult,0-2 hours,Yes,No,A,0,1.0,1.0,2.0,1.0
+47,AC,human,Male,Master’s student,Master’s student (1st year),29,Actively applying for full-time jobs,Computer Science / Engineering,Somewhat difficult,0-2 hours,Yes,No,C,1,1.0,2.0,1.0,1.0
+48,AB,human,Male,Master’s student,Master’s student (1st year),25,Not currently looking for jobs,Information Systems / Data Science,Neither easy nor difficult,0-2 hours,No,No,A,0,3.0,3.0,3.0,3.0
+48,AB,human,Male,Master’s student,Master’s student (1st year),25,Not currently looking for jobs,Information Systems / Data Science,Neither easy nor difficult,0-2 hours,No,No,B,1,4.0,4.0,5.0,4.0
+49,AB,human,Female,Master’s student,Master’s student (1st year),26,Not currently looking for jobs,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,A,0,4.0,3.0,5.0,3.0
+49,AB,human,Female,Master’s student,Master’s student (1st year),26,Not currently looking for jobs,Information Systems / Data Science,Somewhat difficult,6-8 hours,Yes,Yes,B,1,2.0,3.0,3.0,2.0

@@ -1,0 +1,1138 @@
+You are generating synthetic tabular data.
+
+Goal:
+Generate 100 NEW rows that statistically resemble the original dataset without copying existing rows.
+
+Dataset columns:
+['person_id', 'group', 'gender', 'edu_level', 'year_in_school', 'age', 'job_status', 'field', 'difficulty', 'time_per_week', 'used_ai', 'heard_simplify', 'A_signup', 'A_useful', 'A_regular', 'A_recommend', 'T_signup', 'T_useful', 'T_regular', 'T_recommend']
+
+ID rules:
+- The id column is person_id
+- Existing maximum id is 49
+- Generate new ids starting from 50
+- ids must be unique
+
+Schema:
+{
+  "categorical_cols": [
+    "group",
+    "year_in_school",
+    "age",
+    "job_status",
+    "field",
+    "difficulty",
+    "time_per_week",
+    "heard_simplify",
+    "A_signup",
+    "A_useful",
+    "A_regular",
+    "A_recommend",
+    "T_signup",
+    "T_useful",
+    "T_regular",
+    "T_recommend"
+  ],
+  "binary_cols": [
+    "gender",
+    "edu_level",
+    "used_ai"
+  ],
+  "numeric_cols": [],
+  "feature_cols": [
+    "group",
+    "gender",
+    "edu_level",
+    "year_in_school",
+    "age",
+    "job_status",
+    "field",
+    "difficulty",
+    "time_per_week",
+    "used_ai",
+    "heard_simplify",
+    "A_signup",
+    "A_useful",
+    "A_regular",
+    "A_recommend",
+    "T_signup",
+    "T_useful",
+    "T_regular",
+    "T_recommend"
+  ]
+}
+
+Allowed unique values for low-cardinality discrete columns:
+{
+  "group": [
+    "AB"
+  ],
+  "year_in_school": [
+    "Master\u2019s student (1st year)",
+    "Master\u2019s student (2nd year or above)",
+    "PhD year 3+"
+  ],
+  "age": [
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "28",
+    "31",
+    "38"
+  ],
+  "job_status": [
+    "Actively applying for full-time jobs",
+    "Actively applying for internships",
+    "Exploring opportunities but not applying yet",
+    "Not currently looking for jobs"
+  ],
+  "field": [
+    "Business",
+    "Computer Science / Engineering",
+    "Design",
+    "Information Systems / Data Science",
+    "Social Sciences"
+  ],
+  "difficulty": [
+    "Extremely difficult",
+    "Neither easy nor difficult",
+    "Somewhat difficult"
+  ],
+  "time_per_week": [
+    "0-2 hours",
+    "3-5 hours",
+    "6-8 hours",
+    "More than 8 hours"
+  ],
+  "heard_simplify": [
+    "No",
+    "Not sure",
+    "Yes"
+  ],
+  "A_signup": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "A_useful": [
+    "1.0",
+    "2.0",
+    "3.0",
+    "4.0",
+    "5.0"
+  ],
+  "A_regular": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "A_recommend": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ],
+  "T_signup": [
+    "1.0",
+    "2.0",
+    "3.0",
+    "4.0"
+  ],
+  "T_useful": [
+    "1.0",
+    "2.0",
+    "3.0",
+    "4.0",
+    "5.0"
+  ],
+  "T_regular": [
+    "1.0",
+    "2.0",
+    "3.0",
+    "4.0",
+    "5.0"
+  ],
+  "T_recommend": [
+    "1.0",
+    "2.0",
+    "3.0",
+    "4.0",
+    "5.0"
+  ],
+  "gender": [
+    "Female",
+    "Male"
+  ],
+  "edu_level": [
+    "Master\u2019s student",
+    "Other"
+  ],
+  "used_ai": [
+    0,
+    1
+  ]
+}
+
+Marginal distributions and numeric summaries:
+{
+  "group": {
+    "n_unique_non_null": 1,
+    "unique_values": [
+      "AB"
+    ],
+    "counts": {
+      "AB": 25
+    },
+    "proportions": {
+      "AB": 1.0
+    }
+  },
+  "year_in_school": {
+    "n_unique_non_null": 3,
+    "unique_values": [
+      "Master\u2019s student (1st year)",
+      "Master\u2019s student (2nd year or above)",
+      "PhD year 3+"
+    ],
+    "counts": {
+      "Master\u2019s student (1st year)": 20,
+      "Master\u2019s student (2nd year or above)": 4,
+      "PhD year 3+": 1
+    },
+    "proportions": {
+      "Master\u2019s student (1st year)": 0.8,
+      "Master\u2019s student (2nd year or above)": 0.16,
+      "PhD year 3+": 0.04
+    }
+  },
+  "age": {
+    "n_unique_non_null": 9,
+    "unique_values": [
+      "23",
+      "24",
+      "22",
+      "31",
+      "25",
+      "38",
+      "21",
+      "28",
+      "26"
+    ],
+    "counts": {
+      "23": 8,
+      "24": 5,
+      "22": 4,
+      "31": 2,
+      "25": 2,
+      "38": 1,
+      "21": 1,
+      "28": 1,
+      "26": 1
+    },
+    "proportions": {
+      "23": 0.32,
+      "24": 0.2,
+      "22": 0.16,
+      "31": 0.08,
+      "25": 0.08,
+      "38": 0.04,
+      "21": 0.04,
+      "28": 0.04,
+      "26": 0.04
+    }
+  },
+  "job_status": {
+    "n_unique_non_null": 4,
+    "unique_values": [
+      "Actively applying for internships",
+      "Not currently looking for jobs",
+      "Actively applying for full-time jobs",
+      "Exploring opportunities but not applying yet"
+    ],
+    "counts": {
+      "Actively applying for internships": 12,
+      "Not currently looking for jobs": 6,
+      "Actively applying for full-time jobs": 5,
+      "Exploring opportunities but not applying yet": 2
+    },
+    "proportions": {
+      "Actively applying for internships": 0.48,
+      "Not currently looking for jobs": 0.24,
+      "Actively applying for full-time jobs": 0.2,
+      "Exploring opportunities but not applying yet": 0.08
+    }
+  },
+  "field": {
+    "n_unique_non_null": 5,
+    "unique_values": [
+      "Information Systems / Data Science",
+      "Computer Science / Engineering",
+      "Business",
+      "Social Sciences",
+      "Design"
+    ],
+    "counts": {
+      "Information Systems / Data Science": 19,
+      "Computer Science / Engineering": 3,
+      "Business": 1,
+      "Social Sciences": 1,
+      "Design": 1
+    },
+    "proportions": {
+      "Information Systems / Data Science": 0.76,
+      "Computer Science / Engineering": 0.12,
+      "Business": 0.04,
+      "Social Sciences": 0.04,
+      "Design": 0.04
+    }
+  },
+  "difficulty": {
+    "n_unique_non_null": 3,
+    "unique_values": [
+      "Somewhat difficult",
+      "Extremely difficult",
+      "Neither easy nor difficult"
+    ],
+    "counts": {
+      "Somewhat difficult": 14,
+      "Extremely difficult": 8,
+      "Neither easy nor difficult": 3
+    },
+    "proportions": {
+      "Somewhat difficult": 0.56,
+      "Extremely difficult": 0.32,
+      "Neither easy nor difficult": 0.12
+    }
+  },
+  "time_per_week": {
+    "n_unique_non_null": 4,
+    "unique_values": [
+      "3-5 hours",
+      "0-2 hours",
+      "6-8 hours",
+      "More than 8 hours"
+    ],
+    "counts": {
+      "3-5 hours": 8,
+      "0-2 hours": 7,
+      "6-8 hours": 7,
+      "More than 8 hours": 3
+    },
+    "proportions": {
+      "3-5 hours": 0.32,
+      "0-2 hours": 0.28,
+      "6-8 hours": 0.28,
+      "More than 8 hours": 0.12
+    }
+  },
+  "heard_simplify": {
+    "n_unique_non_null": 3,
+    "unique_values": [
+      "Yes",
+      "No",
+      "Not sure"
+    ],
+    "counts": {
+      "Yes": 18,
+      "No": 5,
+      "Not sure": 2
+    },
+    "proportions": {
+      "Yes": 0.72,
+      "No": 0.2,
+      "Not sure": 0.08
+    }
+  },
+  "A_signup": {
+    "n_unique_non_null": 5,
+    "unique_values": [
+      "4",
+      "3",
+      "1",
+      "2",
+      "5"
+    ],
+    "counts": {
+      "4": 11,
+      "3": 6,
+      "1": 3,
+      "2": 3,
+      "5": 2
+    },
+    "proportions": {
+      "4": 0.44,
+      "3": 0.24,
+      "1": 0.12,
+      "2": 0.12,
+      "5": 0.08
+    }
+  },
+  "A_useful": {
+    "n_unique_non_null": 5,
+    "unique_values": [
+      "3.0",
+      "1.0",
+      "2.0",
+      "nan",
+      "5.0",
+      "4.0"
+    ],
+    "counts": {
+      "3.0": 14,
+      "1.0": 4,
+      "2.0": 4,
+      "nan": 1,
+      "5.0": 1,
+      "4.0": 1
+    },
+    "proportions": {
+      "3.0": 0.56,
+      "1.0": 0.16,
+      "2.0": 0.16,
+      "nan": 0.04,
+      "5.0": 0.04,
+      "4.0": 0.04
+    }
+  },
+  "A_regular": {
+    "n_unique_non_null": 5,
+    "unique_values": [
+      "4",
+      "3",
+      "1",
+      "5",
+      "2"
+    ],
+    "counts": {
+      "4": 9,
+      "3": 8,
+      "1": 5,
+      "5": 2,
+      "2": 1
+    },
+    "proportions": {
+      "4": 0.36,
+      "3": 0.32,
+      "1": 0.2,
+      "5": 0.08,
+      "2": 0.04
+    }
+  },
+  "A_recommend": {
+    "n_unique_non_null": 5,
+    "unique_values": [
+      "3",
+      "4",
+      "1",
+      "2",
+      "5"
+    ],
+    "counts": {
+      "3": 10,
+      "4": 8,
+      "1": 3,
+      "2": 3,
+      "5": 1
+    },
+    "proportions": {
+      "3": 0.4,
+      "4": 0.32,
+      "1": 0.12,
+      "2": 0.12,
+      "5": 0.04
+    }
+  },
+  "T_signup": {
+    "n_unique_non_null": 4,
+    "unique_values": [
+      "4.0",
+      "3.0",
+      "2.0",
+      "1.0"
+    ],
+    "counts": {
+      "4.0": 13,
+      "3.0": 7,
+      "2.0": 3,
+      "1.0": 2
+    },
+    "proportions": {
+      "4.0": 0.52,
+      "3.0": 0.28,
+      "2.0": 0.12,
+      "1.0": 0.08
+    }
+  },
+  "T_useful": {
+    "n_unique_non_null": 5,
+    "unique_values": [
+      "3.0",
+      "4.0",
+      "2.0",
+      "1.0",
+      "5.0"
+    ],
+    "counts": {
+      "3.0": 11,
+      "4.0": 8,
+      "2.0": 3,
+      "1.0": 2,
+      "5.0": 1
+    },
+    "proportions": {
+      "3.0": 0.44,
+      "4.0": 0.32,
+      "2.0": 0.12,
+      "1.0": 0.08,
+      "5.0": 0.04
+    }
+  },
+  "T_regular": {
+    "n_unique_non_null": 5,
+    "unique_values": [
+      "4.0",
+      "3.0",
+      "2.0",
+      "1.0",
+      "5.0"
+    ],
+    "counts": {
+      "4.0": 11,
+      "3.0": 7,
+      "2.0": 3,
+      "1.0": 2,
+      "5.0": 2
+    },
+    "proportions": {
+      "4.0": 0.44,
+      "3.0": 0.28,
+      "2.0": 0.12,
+      "1.0": 0.08,
+      "5.0": 0.08
+    }
+  },
+  "T_recommend": {
+    "n_unique_non_null": 5,
+    "unique_values": [
+      "4.0",
+      "3.0",
+      "1.0",
+      "2.0",
+      "5.0"
+    ],
+    "counts": {
+      "4.0": 9,
+      "3.0": 8,
+      "1.0": 3,
+      "2.0": 3,
+      "5.0": 2
+    },
+    "proportions": {
+      "4.0": 0.36,
+      "3.0": 0.32,
+      "1.0": 0.12,
+      "2.0": 0.12,
+      "5.0": 0.08
+    }
+  },
+  "gender": {
+    "n_unique_non_null": 2,
+    "unique_values": [
+      "Female",
+      "Male"
+    ],
+    "counts": {
+      "Female": 16,
+      "Male": 9
+    },
+    "proportions": {
+      "Female": 0.64,
+      "Male": 0.36
+    }
+  },
+  "edu_level": {
+    "n_unique_non_null": 2,
+    "unique_values": [
+      "Master\u2019s student",
+      "Other"
+    ],
+    "counts": {
+      "Master\u2019s student": 24,
+      "Other": 1
+    },
+    "proportions": {
+      "Master\u2019s student": 0.96,
+      "Other": 0.04
+    }
+  },
+  "used_ai": {
+    "n_unique_non_null": 2,
+    "unique_values": [
+      "1",
+      "0"
+    ],
+    "counts": {
+      "1": 20,
+      "0": 5
+    },
+    "proportions": {
+      "1": 0.8,
+      "0": 0.2
+    }
+  }
+}
+
+Conditional target rates to preserve:
+{
+  "group": {
+    "AB": 3.24
+  },
+  "year_in_school": {
+    "Master\u2019s student (1st year)": 3.2,
+    "Master\u2019s student (2nd year or above)": 3.5,
+    "PhD year 3+": 3.0
+  },
+  "age": {
+    "21": 4.0,
+    "22": 1.5,
+    "23": 3.625,
+    "24": 3.8,
+    "25": 4.0,
+    "26": 2.0,
+    "28": 3.0,
+    "31": 3.5,
+    "38": 3.0
+  },
+  "job_status": {
+    "Actively applying for full-time jobs": 2.8,
+    "Actively applying for internships": 3.6667,
+    "Exploring opportunities but not applying yet": 3.5,
+    "Not currently looking for jobs": 2.6667
+  },
+  "field": {
+    "Business": 3.0,
+    "Computer Science / Engineering": 4.0,
+    "Design": 2.0,
+    "Information Systems / Data Science": 3.3158,
+    "Social Sciences": 1.0
+  },
+  "difficulty": {
+    "Extremely difficult": 3.5,
+    "Neither easy nor difficult": 4.0,
+    "Somewhat difficult": 2.9286
+  },
+  "time_per_week": {
+    "0-2 hours": 3.1429,
+    "3-5 hours": 3.125,
+    "6-8 hours": 3.2857,
+    "More than 8 hours": 3.6667
+  },
+  "heard_simplify": {
+    "No": 2.8,
+    "Not sure": 2.0,
+    "Yes": 3.5
+  },
+  "A_signup": {
+    "1": 1.6667,
+    "2": 2.6667,
+    "3": 3.3333,
+    "4": 3.6364,
+    "5": 4.0
+  },
+  "A_useful": {
+    "1.0": 2.0,
+    "2.0": 3.0,
+    "3.0": 3.5714,
+    "4.0": 4.0,
+    "5.0": 4.0,
+    "nan": 3.0
+  },
+  "A_regular": {
+    "1": 2.4,
+    "2": 3.0,
+    "3": 3.375,
+    "4": 3.6667,
+    "5": 3.0
+  },
+  "A_recommend": {
+    "1": 2.3333,
+    "2": 3.6667,
+    "3": 3.1,
+    "4": 3.5,
+    "5": 4.0
+  },
+  "T_useful": {
+    "1.0": 1.5,
+    "2.0": 2.3333,
+    "3.0": 3.2727,
+    "4.0": 3.875,
+    "5.0": 4.0
+  },
+  "T_regular": {
+    "1.0": 2.0,
+    "2.0": 3.0,
+    "3.0": 2.8571,
+    "4.0": 3.6364,
+    "5.0": 4.0
+  },
+  "T_recommend": {
+    "1.0": 2.0,
+    "2.0": 2.0,
+    "3.0": 3.375,
+    "4.0": 3.7778,
+    "5.0": 4.0
+  },
+  "gender": {
+    "Female": 3.125,
+    "Male": 3.4444
+  },
+  "edu_level": {
+    "Master\u2019s student": 3.25,
+    "Other": 3.0
+  },
+  "used_ai": {
+    "0": 3.2,
+    "1": 3.25
+  }
+}
+
+Important numeric correlations to roughly preserve:
+{}
+
+Logical constraints:
+[
+  "gender should only use its observed binary values",
+  "edu_level should only use its observed binary values",
+  "used_ai should only use its observed binary values",
+  "group should only use observed category labels",
+  "year_in_school should only use observed category labels",
+  "age should only use observed category labels",
+  "job_status should only use observed category labels",
+  "field should only use observed category labels",
+  "difficulty should only use observed category labels",
+  "time_per_week should only use observed category labels",
+  "Preserve the observed distribution across group",
+  "Preserve the relationship between group and T_signup"
+]
+
+Target column:
+- The outcome/target column is T_signup
+- Preserve its relationship with the other columns
+- Do not directly rebalance the target column unless explicitly instructed
+
+Treatment relationship:
+- The treatment/grouping column is group
+- Preserve a realistic relationship between group and T_signup
+- Observed target rates by group:
+{
+  "AB": 3.24
+}
+
+Balance handling mode: preserve
+
+Instructions:
+- Preserve the original observed structure in the new rows.
+- If the source dataset is already balanced, keep it balanced.
+- If the source dataset has imbalance, do not intentionally correct it.
+- Match the observed group-size distribution and the observed within-group covariate distributions as closely as possible.
+- Keep the relationship between predictors, group, and T_signup realistic.
+
+Detected imbalance summary:
+{
+  "group_size": {
+    "group_col": "group",
+    "counts": {
+      "AB": 25
+    },
+    "shares": {
+      "AB": 1.0
+    },
+    "max_share_diff": 0.0,
+    "imbalance_ratio": 1.0,
+    "status": "balanced"
+  },
+  "covariates": {
+    "year_in_school": {
+      "column": "year_in_school",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "Master\u2019s student (1st year)": 0.8,
+          "Master\u2019s student (2nd year or above)": 0.16,
+          "PhD year 3+": 0.04
+        }
+      },
+      "share_gap_by_category": {
+        "Master\u2019s student (1st year)": 0.0,
+        "Master\u2019s student (2nd year or above)": 0.0,
+        "PhD year 3+": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "age": {
+      "column": "age",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "21": 0.04,
+          "22": 0.16,
+          "23": 0.32,
+          "24": 0.2,
+          "25": 0.08,
+          "26": 0.04,
+          "28": 0.04,
+          "31": 0.08,
+          "38": 0.04
+        }
+      },
+      "share_gap_by_category": {
+        "21": 0.0,
+        "22": 0.0,
+        "23": 0.0,
+        "24": 0.0,
+        "25": 0.0,
+        "26": 0.0,
+        "28": 0.0,
+        "31": 0.0,
+        "38": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "job_status": {
+      "column": "job_status",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "Actively applying for full-time jobs": 0.2,
+          "Actively applying for internships": 0.48,
+          "Exploring opportunities but not applying yet": 0.08,
+          "Not currently looking for jobs": 0.24
+        }
+      },
+      "share_gap_by_category": {
+        "Actively applying for full-time jobs": 0.0,
+        "Actively applying for internships": 0.0,
+        "Exploring opportunities but not applying yet": 0.0,
+        "Not currently looking for jobs": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "field": {
+      "column": "field",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "Business": 0.04,
+          "Computer Science / Engineering": 0.12,
+          "Design": 0.04,
+          "Information Systems / Data Science": 0.76,
+          "Social Sciences": 0.04
+        }
+      },
+      "share_gap_by_category": {
+        "Business": 0.0,
+        "Computer Science / Engineering": 0.0,
+        "Design": 0.0,
+        "Information Systems / Data Science": 0.0,
+        "Social Sciences": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "difficulty": {
+      "column": "difficulty",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "Extremely difficult": 0.32,
+          "Neither easy nor difficult": 0.12,
+          "Somewhat difficult": 0.56
+        }
+      },
+      "share_gap_by_category": {
+        "Extremely difficult": 0.0,
+        "Neither easy nor difficult": 0.0,
+        "Somewhat difficult": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "time_per_week": {
+      "column": "time_per_week",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "0-2 hours": 0.28,
+          "3-5 hours": 0.32,
+          "6-8 hours": 0.28,
+          "More than 8 hours": 0.12
+        }
+      },
+      "share_gap_by_category": {
+        "0-2 hours": 0.0,
+        "3-5 hours": 0.0,
+        "6-8 hours": 0.0,
+        "More than 8 hours": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "heard_simplify": {
+      "column": "heard_simplify",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "No": 0.2,
+          "Not sure": 0.08,
+          "Yes": 0.72
+        }
+      },
+      "share_gap_by_category": {
+        "No": 0.0,
+        "Not sure": 0.0,
+        "Yes": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "A_signup": {
+      "column": "A_signup",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "1": 0.12,
+          "2": 0.12,
+          "3": 0.24,
+          "4": 0.44,
+          "5": 0.08
+        }
+      },
+      "share_gap_by_category": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "A_useful": {
+      "column": "A_useful",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "1.0": 0.16,
+          "2.0": 0.16,
+          "3.0": 0.56,
+          "4.0": 0.04,
+          "5.0": 0.04,
+          "nan": 0.04
+        }
+      },
+      "share_gap_by_category": {
+        "1.0": 0.0,
+        "2.0": 0.0,
+        "3.0": 0.0,
+        "4.0": 0.0,
+        "5.0": 0.0,
+        "nan": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "A_regular": {
+      "column": "A_regular",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "1": 0.2,
+          "2": 0.04,
+          "3": 0.32,
+          "4": 0.36,
+          "5": 0.08
+        }
+      },
+      "share_gap_by_category": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "A_recommend": {
+      "column": "A_recommend",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "1": 0.12,
+          "2": 0.12,
+          "3": 0.4,
+          "4": 0.32,
+          "5": 0.04
+        }
+      },
+      "share_gap_by_category": {
+        "1": 0.0,
+        "2": 0.0,
+        "3": 0.0,
+        "4": 0.0,
+        "5": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "T_useful": {
+      "column": "T_useful",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "1.0": 0.08,
+          "2.0": 0.12,
+          "3.0": 0.44,
+          "4.0": 0.32,
+          "5.0": 0.04
+        }
+      },
+      "share_gap_by_category": {
+        "1.0": 0.0,
+        "2.0": 0.0,
+        "3.0": 0.0,
+        "4.0": 0.0,
+        "5.0": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "T_regular": {
+      "column": "T_regular",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "1.0": 0.08,
+          "2.0": 0.12,
+          "3.0": 0.28,
+          "4.0": 0.44,
+          "5.0": 0.08
+        }
+      },
+      "share_gap_by_category": {
+        "1.0": 0.0,
+        "2.0": 0.0,
+        "3.0": 0.0,
+        "4.0": 0.0,
+        "5.0": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "T_recommend": {
+      "column": "T_recommend",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "1.0": 0.12,
+          "2.0": 0.12,
+          "3.0": 0.32,
+          "4.0": 0.36,
+          "5.0": 0.08
+        }
+      },
+      "share_gap_by_category": {
+        "1.0": 0.0,
+        "2.0": 0.0,
+        "3.0": 0.0,
+        "4.0": 0.0,
+        "5.0": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "gender": {
+      "column": "gender",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "Female": 0.64,
+          "Male": 0.36
+        }
+      },
+      "share_gap_by_category": {
+        "Female": 0.0,
+        "Male": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "edu_level": {
+      "column": "edu_level",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "Master\u2019s student": 0.96,
+          "Other": 0.04
+        }
+      },
+      "share_gap_by_category": {
+        "Master\u2019s student": 0.0,
+        "Other": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    },
+    "used_ai": {
+      "column": "used_ai",
+      "group_col": "group",
+      "shares_within_group": {
+        "AB": {
+          "0": 0.2,
+          "1": 0.8
+        }
+      },
+      "share_gap_by_category": {
+        "0": 0.0,
+        "1": 0.0
+      },
+      "max_category_share_gap": 0.0,
+      "status": "balanced"
+    }
+  }
+}
+
+Instructions:
+1. Generate exactly 100 new rows.
+2. Do not copy any existing row.
+3. For low-cardinality discrete columns, only use observed category labels.
+4. Keep numeric values plausible and within observed ranges unless a small amount of realistic variation is needed.
+5. Preserve the important relationships in the summary above.
+6. Output ONLY CSV with a header row.
+7. Output only the new rows, not the original rows.
+
+Additional study context:
+- This is a WITHIN-SUBJECTS A/B test about the Simplify job-application tool.
+- Each person rated Page A (control) AND Page B (treatment), both on 4 outcomes (0–5).
+- Columns A_signup/useful/regular/recommend = Page A ratings.
+- Columns T_signup/useful/regular/recommend = Page B ratings.
+- Output column names MUST be:
+  person_id,group,data_source,gender,edu_level,year_in_school,age,job_status,field,
+  difficulty,time_per_week,used_ai,heard_simplify,
+  A_signup,A_useful,A_regular,A_recommend,
+  B_signup,B_useful,B_regular,B_recommend
+- data_source must always be "llm"
+- group must always be "AB"
+- person_id starts from 1001
+- Do NOT output T_ column names; rename them as B_<outcome>.
+- Output ONLY the CSV (header + 100 data rows). No markdown, no commentary.
