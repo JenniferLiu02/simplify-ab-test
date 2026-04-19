@@ -1,4 +1,4 @@
-#!/usr/bin/env /opt/homebrew/bin/python3.12
+#!/usr/bin/env /usr/local/bin/python3
 """
 03_analysis.py
 --------------
@@ -301,19 +301,110 @@ def hte_subgroups(df_long: pd.DataFrame, group: str, outcome: str = "signup"):
     return pd.DataFrame(rows)
 
 
+def hte_c_vs_b(df_long: pd.DataFrame, outcome: str = "signup"):
+    """Compute implied C vs B ATE by subgroup: (C-A) - (B-A)."""
+    subgroups = {
+        "gender":         {"Female": "Female", "Male": "Male"},
+        "used_ai":        {"Used AI = Yes": "Yes", "Used AI = No": "No"},
+        "heard_simplify": {"Heard Simplify = Yes": "Yes",
+                           "Heard Simplify = No/Not sure": None},
+    }
+    
+    df_ab = compute_diffs(df_long, "AB")
+    df_ac = compute_diffs(df_long, "AC")
+    
+    rows = []
+    
+    # Overall
+    ab_diff = df_ab[f"diff_{outcome}"].dropna().astype(float)
+    ac_diff = df_ac[f"diff_{outcome}"].dropna().astype(float)
+    c_vs_b = ac_diff.mean() - ab_diff.mean()
+    
+    ab_n = len(ab_diff)
+    ac_n = len(ac_diff)
+    
+    # SE for difference of independent means
+    ab_se = ab_diff.std(ddof=1) / np.sqrt(ab_n) if ab_n > 1 else np.nan
+    ac_se = ac_diff.std(ddof=1) / np.sqrt(ac_n) if ac_n > 1 else np.nan
+    se = np.sqrt(ab_se**2 + ac_se**2) if not (np.isnan(ab_se) or np.isnan(ac_se)) else np.nan
+    
+    if se > 0 and not np.isnan(se):
+        t = c_vs_b / se
+        p = 2 * stats.t.sf(abs(t), df=min(ab_n, ac_n)-1)
+    else:
+        t, p = np.nan, np.nan
+    
+    rows.append({"subgroup": "Overall", "n": min(ab_n, ac_n), "mean_diff": c_vs_b, "SE": se,
+                 "t": t, "p": p, "CI_lo": np.nan, "CI_hi": np.nan})
+    
+    for col, cats in subgroups.items():
+        for label, val in cats.items():
+            if val is None:
+                sub_ab = df_ab[df_ab[col].isin(["No", "Not sure"])]
+                sub_ac = df_ac[df_ac[col].isin(["No", "Not sure"])]
+            else:
+                sub_ab = df_ab[df_ab[col] == val]
+                sub_ac = df_ac[df_ac[col] == val]
+            
+            ab_diff = sub_ab[f"diff_{outcome}"].dropna().astype(float)
+            ac_diff = sub_ac[f"diff_{outcome}"].dropna().astype(float)
+            
+            ab_n = len(ab_diff)
+            ac_n = len(ac_diff)
+            
+            if ab_n > 0 and ac_n > 0:
+                c_vs_b = ac_diff.mean() - ab_diff.mean()
+                ab_se = ab_diff.std(ddof=1) / np.sqrt(ab_n) if ab_n > 1 else np.nan
+                ac_se = ac_diff.std(ddof=1) / np.sqrt(ac_n) if ac_n > 1 else np.nan
+                se = np.sqrt(ab_se**2 + ac_se**2) if not (np.isnan(ab_se) or np.isnan(ac_se)) else np.nan
+                
+                if se > 0 and not np.isnan(se):
+                    t = c_vs_b / se
+                    p = 2 * stats.t.sf(abs(t), df=min(ab_n, ac_n)-1)
+                else:
+                    t, p = np.nan, np.nan
+                
+                rows.append({"subgroup": label, "n": min(ab_n, ac_n), "mean_diff": c_vs_b, "SE": se,
+                             "t": t, "p": p, "CI_lo": np.nan, "CI_hi": np.nan})
+    
+    return pd.DataFrame(rows)
+
+
 def hte_analysis(df_human_long: pd.DataFrame, df_llm_long: pd.DataFrame):
     sep("(4) HETEROGENEOUS TREATMENT EFFECTS")
 
-    for group in ["AB", "AC"]:
-        second_page = "B" if group == "AB" else "C"
-        print(f"\n── Treatment: Page {second_page} vs Page A  │  Outcome: signup ──\n")
-
-        for source_label, df_src in [("Human",    df_human_long),
-                                      ("LLM",      df_llm_long),
-                                      ("Combined", pd.concat([df_human_long,df_llm_long],
-                                                              ignore_index=True))]:
-            tbl = hte_subgroups(df_src, group, outcome="signup")
-            print(f"  [{source_label}]")
+    for data_label, df_src in [("Human", df_human_long), ("LLM", df_llm_long), 
+                                ("Combined", pd.concat([df_human_long, df_llm_long], ignore_index=True))]:
+        print(f"\n[{data_label} data]")
+        
+        for outcome in OUTCOMES:
+            print(f"\nOutcome: {outcome}")
+            
+            # B vs A
+            print(f"\n── Page B vs Page A ──\n")
+            tbl = hte_subgroups(df_src, "AB", outcome=outcome)
+            print(f"  {'Subgroup':<32} {'n':>5} {'Mean Diff':>10} {'SE':>7} {'p-value':>12}")
+            print("  " + "─" * 68)
+            for _, r in tbl.iterrows():
+                sig = " *" if (not np.isnan(r['p']) and r['p'] < 0.05) else ""
+                print(f"  {r['subgroup']:<32} {int(r['n']) if not np.isnan(r['n']) else '—':>5} "
+                      f"{r['mean_diff']:>+10.3f} {r['SE']:>7.3f} {fmt_p(r['p']):>12}{sig}")
+            print()
+            
+            # C vs A
+            print(f"── Page C vs Page A ──\n")
+            tbl = hte_subgroups(df_src, "AC", outcome=outcome)
+            print(f"  {'Subgroup':<32} {'n':>5} {'Mean Diff':>10} {'SE':>7} {'p-value':>12}")
+            print("  " + "─" * 68)
+            for _, r in tbl.iterrows():
+                sig = " *" if (not np.isnan(r['p']) and r['p'] < 0.05) else ""
+                print(f"  {r['subgroup']:<32} {int(r['n']) if not np.isnan(r['n']) else '—':>5} "
+                      f"{r['mean_diff']:>+10.3f} {r['SE']:>7.3f} {fmt_p(r['p']):>12}{sig}")
+            print()
+            
+            # C vs B
+            print(f"── Page C vs Page B ──\n")
+            tbl = hte_c_vs_b(df_src, outcome=outcome)
             print(f"  {'Subgroup':<32} {'n':>5} {'Mean Diff':>10} {'SE':>7} {'p-value':>12}")
             print("  " + "─" * 68)
             for _, r in tbl.iterrows():
@@ -322,156 +413,60 @@ def hte_analysis(df_human_long: pd.DataFrame, df_llm_long: pd.DataFrame):
                       f"{r['mean_diff']:>+10.3f} {r['SE']:>7.3f} {fmt_p(r['p']):>12}{sig}")
             print()
 
-    # ── OLS regression with interactions (Human data, AB and AC separately)
-    sep("(4b) OLS REGRESSION WITH INTERACTIONS  [Human data]", char="─")
-    print("Outcome: signup")
-    print("Model AB: diff_signup ~ female + ai_yes + heard_yes  (B vs A)")
-    print("Model AC: diff_signup ~ female + ai_yes + heard_yes  (C vs A)")
-    print("Model Combined: diff_signup ~ female + ai_yes + heard_yes + is_page_C  (C vs B)\n")
 
-    df_ab = compute_diffs(df_human_long, "AB")
-    df_ac = compute_diffs(df_human_long, "AC")
-    df_ab["female"]    = (df_ab["gender"] == "Female").astype(int)
-    df_ab["ai_yes"]    = (df_ab["used_ai"] == "Yes").astype(int)
-    df_ab["heard_yes"] = (df_ab["heard_simplify"] == "Yes").astype(int)
-    df_ab["diff_signup"] = df_ab["diff_signup"].astype(float)
-    df_ab = df_ab.dropna(subset=["diff_signup", "female", "ai_yes", "heard_yes"])
+def ols_analysis(df_human_long: pd.DataFrame, df_llm_long: pd.DataFrame):
+    # ── OLS regression with interactions
+    sep("(4b) OLS REGRESSION WITH INTERACTIONS", char="─")
+    for data_label, df_src in [("Human", df_human_long), ("LLM", df_llm_long), ("Combined", pd.concat([df_human_long, df_llm_long], ignore_index=True))]:
+        print(f"\n[{data_label} data]")
+        for outcome in OUTCOMES:
+            print(f"\nOutcome: {outcome}")
+            print(f"Model AB: diff_{outcome} ~ female + ai_yes + heard_yes  (B vs A)")
+            print(f"Model AC: diff_{outcome} ~ female + ai_yes + heard_yes  (C vs A)")
+            print(f"Model Combined: diff_{outcome} ~ female + ai_yes + heard_yes + is_page_C  (C vs B)\n")
 
-    df_ac["female"]    = (df_ac["gender"] == "Female").astype(int)
-    df_ac["ai_yes"]    = (df_ac["used_ai"] == "Yes").astype(int)
-    df_ac["heard_yes"] = (df_ac["heard_simplify"] == "Yes").astype(int)
-    df_ac["diff_signup"] = df_ac["diff_signup"].astype(float)
-    df_ac = df_ac.dropna(subset=["diff_signup", "female", "ai_yes", "heard_yes"])
+            df_ab = compute_diffs(df_src, "AB")
+            df_ac = compute_diffs(df_src, "AC")
+            df_ab["female"]    = (df_ab["gender"] == "Female").astype(int)
+            df_ab["ai_yes"]    = (df_ab["used_ai"] == "Yes").astype(int)
+            df_ab["heard_yes"] = (df_ab["heard_simplify"] == "Yes").astype(int)
+            df_ab[f"diff_{outcome}"] = df_ab[f"diff_{outcome}"].astype(float)
+            df_ab = df_ab.dropna(subset=[f"diff_{outcome}", "female", "ai_yes", "heard_yes"])
 
-    if len(df_ab) > 5:
-        print("[AB group: B vs A]")
-        model_ab = smf.ols("diff_signup ~ female + ai_yes + heard_yes", data=df_ab).fit()
-        print(model_ab.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few AB observations for regression)")
-        print()
+            df_ac["female"]    = (df_ac["gender"] == "Female").astype(int)
+            df_ac["ai_yes"]    = (df_ac["used_ai"] == "Yes").astype(int)
+            df_ac["heard_yes"] = (df_ac["heard_simplify"] == "Yes").astype(int)
+            df_ac[f"diff_{outcome}"] = df_ac[f"diff_{outcome}"].astype(float)
+            df_ac = df_ac.dropna(subset=[f"diff_{outcome}", "female", "ai_yes", "heard_yes"])
 
-    if len(df_ac) > 5:
-        print("[AC group: C vs A]")
-        model_ac = smf.ols("diff_signup ~ female + ai_yes + heard_yes", data=df_ac).fit()
-        print(model_ac.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few AC observations for regression)")
-        print()
+            if len(df_ab) > 5:
+                print("[AB group: B vs A]")
+                model_ab = smf.ols(f"diff_{outcome} ~ female + ai_yes + heard_yes", data=df_ab).fit()
+                print(model_ab.summary2().tables[1].to_string())
+                print()
+            else:
+                print("  (Too few AB observations for regression)")
+                print()
 
-    df_comb_human = pd.concat([df_ab, df_ac], ignore_index=True)
-    df_comb_human["is_page_C"] = df_comb_human["group"].apply(lambda g: 1 if g == "AC" else 0)
-    if len(df_comb_human) > 5:
-        print("[Combined Human: C vs B]")
-        model_comb_human = smf.ols("diff_signup ~ female + ai_yes + heard_yes + is_page_C", data=df_comb_human).fit()
-        print(model_comb_human.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few combined human observations for regression)")
-        print()
+            if len(df_ac) > 5:
+                print("[AC group: C vs A]")
+                model_ac = smf.ols(f"diff_{outcome} ~ female + ai_yes + heard_yes", data=df_ac).fit()
+                print(model_ac.summary2().tables[1].to_string())
+                print()
+            else:
+                print("  (Too few AC observations for regression)")
+                print()
 
-    # ── OLS regression with interactions (LLM data, AB and AC separately)
-    sep("(4c) OLS REGRESSION WITH INTERACTIONS  [LLM data]", char="─")
-    print("Outcome: signup")
-    print("Model AB: diff_signup ~ female + ai_yes + heard_yes  (B vs A)")
-    print("Model AC: diff_signup ~ female + ai_yes + heard_yes  (C vs A)")
-    print("Model Combined: diff_signup ~ female + ai_yes + heard_yes + is_page_C  (C vs B)\n")
-
-    df_ab_llm = compute_diffs(df_llm_long, "AB")
-    df_ac_llm = compute_diffs(df_llm_long, "AC")
-    df_ab_llm["female"]    = (df_ab_llm["gender"] == "Female").astype(int)
-    df_ab_llm["ai_yes"]    = (df_ab_llm["used_ai"] == "Yes").astype(int)
-    df_ab_llm["heard_yes"] = (df_ab_llm["heard_simplify"] == "Yes").astype(int)
-    df_ab_llm["diff_signup"] = df_ab_llm["diff_signup"].astype(float)
-    df_ab_llm = df_ab_llm.dropna(subset=["diff_signup", "female", "ai_yes", "heard_yes"])
-
-    df_ac_llm["female"]    = (df_ac_llm["gender"] == "Female").astype(int)
-    df_ac_llm["ai_yes"]    = (df_ac_llm["used_ai"] == "Yes").astype(int)
-    df_ac_llm["heard_yes"] = (df_ac_llm["heard_simplify"] == "Yes").astype(int)
-    df_ac_llm["diff_signup"] = df_ac_llm["diff_signup"].astype(float)
-    df_ac_llm = df_ac_llm.dropna(subset=["diff_signup", "female", "ai_yes", "heard_yes"])
-
-    if len(df_ab_llm) > 5:
-        print("[AB group: B vs A]")
-        model_ab_llm = smf.ols("diff_signup ~ female + ai_yes + heard_yes", data=df_ab_llm).fit()
-        print(model_ab_llm.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few AB observations for regression)")
-        print()
-
-    if len(df_ac_llm) > 5:
-        print("[AC group: C vs A]")
-        model_ac_llm = smf.ols("diff_signup ~ female + ai_yes + heard_yes", data=df_ac_llm).fit()
-        print(model_ac_llm.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few AC observations for regression)")
-        print()
-
-    df_comb_llm = pd.concat([df_ab_llm, df_ac_llm], ignore_index=True)
-    df_comb_llm["is_page_C"] = df_comb_llm["group"].apply(lambda g: 1 if g == "AC" else 0)
-    if len(df_comb_llm) > 5:
-        print("[Combined LLM: C vs B]")
-        model_comb_llm = smf.ols("diff_signup ~ female + ai_yes + heard_yes + is_page_C", data=df_comb_llm).fit()
-        print(model_comb_llm.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few combined LLM observations for regression)")
-        print()
-
-    # ── OLS regression with interactions (Combined data, human + LLM)
-    sep("(4d) OLS REGRESSION WITH INTERACTIONS  [Combined]", char="─")
-    print("Outcome: signup")
-    print("Model AB: diff_signup ~ female + ai_yes + heard_yes  (B vs A)")
-    print("Model AC: diff_signup ~ female + ai_yes + heard_yes  (C vs A)")
-    print("Model Combined: diff_signup ~ female + ai_yes + heard_yes + is_page_C  (C vs B)\n")
-
-    df_comb_long = pd.concat([df_human_long, df_llm_long], ignore_index=True)
-    df_ab_comb = compute_diffs(df_comb_long, "AB")
-    df_ac_comb = compute_diffs(df_comb_long, "AC")
-    df_ab_comb["female"]    = (df_ab_comb["gender"] == "Female").astype(int)
-    df_ab_comb["ai_yes"]    = (df_ab_comb["used_ai"] == "Yes").astype(int)
-    df_ab_comb["heard_yes"] = (df_ab_comb["heard_simplify"] == "Yes").astype(int)
-    df_ab_comb["diff_signup"] = df_ab_comb["diff_signup"].astype(float)
-    df_ab_comb = df_ab_comb.dropna(subset=["diff_signup", "female", "ai_yes", "heard_yes"])
-
-    df_ac_comb["female"]    = (df_ac_comb["gender"] == "Female").astype(int)
-    df_ac_comb["ai_yes"]    = (df_ac_comb["used_ai"] == "Yes").astype(int)
-    df_ac_comb["heard_yes"] = (df_ac_comb["heard_simplify"] == "Yes").astype(int)
-    df_ac_comb["diff_signup"] = df_ac_comb["diff_signup"].astype(float)
-    df_ac_comb = df_ac_comb.dropna(subset=["diff_signup", "female", "ai_yes", "heard_yes"])
-
-    if len(df_ab_comb) > 5:
-        print("[AB group: B vs A]")
-        model_ab_comb = smf.ols("diff_signup ~ female + ai_yes + heard_yes", data=df_ab_comb).fit()
-        print(model_ab_comb.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few AB observations for regression)")
-        print()
-
-    if len(df_ac_comb) > 5:
-        print("[AC group: C vs A]")
-        model_ac_comb = smf.ols("diff_signup ~ female + ai_yes + heard_yes", data=df_ac_comb).fit()
-        print(model_ac_comb.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few AC observations for regression)")
-        print()
-
-    df_comb_all = pd.concat([df_ab_comb, df_ac_comb], ignore_index=True)
-    df_comb_all["is_page_C"] = df_comb_all["group"].apply(lambda g: 1 if g == "AC" else 0)
-    if len(df_comb_all) > 5:
-        print("[Combined All: C vs B]")
-        model_comb_all = smf.ols("diff_signup ~ female + ai_yes + heard_yes + is_page_C", data=df_comb_all).fit()
-        print(model_comb_all.summary2().tables[1].to_string())
-        print()
-    else:
-        print("  (Too few combined all observations for regression)")
-        print()
+            df_comb = pd.concat([df_ab, df_ac], ignore_index=True)
+            df_comb["is_page_C"] = df_comb["group"].apply(lambda g: 1 if g == "AC" else 0)
+            if len(df_comb) > 5:
+                print("[Combined: C vs B]")
+                model_comb = smf.ols(f"diff_{outcome} ~ female + ai_yes + heard_yes + is_page_C", data=df_comb).fit()
+                print(model_comb.summary2().tables[1].to_string())
+                print()
+            else:
+                print("  (Too few combined observations for regression)")
+                print()
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -553,6 +548,9 @@ def main():
 
     # ── (4) HTE
     hte_analysis(df_human, df_llm)
+
+    # ── (4b) OLS
+    ols_analysis(df_human, df_llm)
 
     # ── (5) Power
     power_analysis(df_human)
