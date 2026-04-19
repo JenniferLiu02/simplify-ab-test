@@ -1,7 +1,7 @@
 You are generating synthetic tabular data.
 
 Goal:
-Generate 100 NEW rows that statistically resemble the original dataset without copying existing rows.
+Generate 500 NEW rows that statistically resemble the original dataset without copying existing rows.
 
 Dataset columns:
 ['person_id', 'group', 'gender', 'edu_level', 'year_in_school', 'age', 'job_status', 'field', 'difficulty', 'time_per_week', 'used_ai', 'heard_simplify', 'A_signup', 'A_useful', 'A_regular', 'A_recommend', 'T_signup', 'T_useful', 'T_regular', 'T_recommend']
@@ -1175,26 +1175,10 @@ Detected imbalance summary:
 }
 
 Instructions:
-1. Generate exactly 100 new rows.
+1. Generate exactly 500 new rows.
 2. Do not copy any existing row.
 3. For low-cardinality discrete columns, only use observed category labels.
 4. Keep numeric values plausible and within observed ranges unless a small amount of realistic variation is needed.
 5. Preserve the important relationships in the summary above.
 6. Output ONLY CSV with a header row.
 7. Output only the new rows, not the original rows.
-
-Additional study context:
-- This is a WITHIN-SUBJECTS A/B test about the Simplify job-application tool.
-- Each person rated Page A (control) AND Page C (treatment), both on 4 outcomes (0–5).
-- Columns A_signup/useful/regular/recommend = Page A ratings.
-- Columns T_signup/useful/regular/recommend = Page C ratings.
-- Output column names MUST be:
-  person_id,group,data_source,gender,edu_level,year_in_school,age,job_status,field,
-  difficulty,time_per_week,used_ai,heard_simplify,
-  A_signup,A_useful,A_regular,A_recommend,
-  C_signup,C_useful,C_regular,C_recommend
-- data_source must always be "llm"
-- group must always be "AC"
-- person_id starts from 1101
-- Do NOT output T_ column names; rename them as C_<outcome>.
-- Output ONLY the CSV (header + 100 data rows). No markdown, no commentary.

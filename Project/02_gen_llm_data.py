@@ -44,7 +44,7 @@ from synthetic_datagen import (
 from check_balance import check_balance
 
 DATA_DIR     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
-N_PER_GROUP  = 100
+N_PER_GROUP  = 500
 OUTCOMES     = ["signup", "useful", "regular", "recommend"]
 
 
@@ -263,8 +263,24 @@ def main():
             balance_mode="preserve",
         )
 
-        # Append study-specific context to the generic prompt
-        context_addendum = f"""
+        # Save base prompt to file for inspection
+        prompt_path = os.path.join(DATA_DIR, f"llm_prompt_{group}.txt")
+        with open(prompt_path, "w") as f:
+            f.write(llm_prompt)
+        print(f"  Prompt saved → data/llm_prompt_{group}.txt  ({len(llm_prompt):,} chars)")
+
+        # ── (3) Generate synthetic data in batches of 100
+        BATCH_SIZE = 100
+        n_batches  = (N_PER_GROUP + BATCH_SIZE - 1) // BATCH_SIZE  # ceil division
+
+        if use_api:
+            all_batches = []
+            batch_pid   = person_start
+            raw_all     = []
+            for batch_idx in range(n_batches):
+                n_this = min(BATCH_SIZE, N_PER_GROUP - batch_idx * BATCH_SIZE)
+                print(f"  Calling Claude API batch {batch_idx+1}/{n_batches} (n={n_this}, pid_start={batch_pid})...")
+                batch_addendum = f"""
 Additional study context:
 - This is a WITHIN-SUBJECTS A/B test about the Simplify job-application tool.
 - Each person rated Page A (control) AND Page {second_page} (treatment), both on 4 outcomes (0–5).
@@ -277,32 +293,31 @@ Additional study context:
   {second_page}_signup,{second_page}_useful,{second_page}_regular,{second_page}_recommend
 - data_source must always be "llm"
 - group must always be "{group}"
-- person_id starts from {person_start}
+- person_id starts from {batch_pid}
 - Do NOT output T_ column names; rename them as {second_page}_<outcome>.
-- Output ONLY the CSV (header + {N_PER_GROUP} data rows). No markdown, no commentary.
+- Output ONLY the CSV (header + {n_this} data rows). No markdown, no commentary.
 """
-        full_prompt = llm_prompt + "\n" + context_addendum
+                batch_prompt = llm_prompt + "\n" + batch_addendum
+                try:
+                    raw_response = call_claude_api(batch_prompt)
+                    raw_all.append(raw_response)
+                    df_batch = parse_csv_response(raw_response, group)
+                    print(f"    Parsed {len(df_batch)} rows.")
+                    all_batches.append(df_batch)
+                    batch_pid += len(df_batch)
+                except Exception as e:
+                    print(f"    Batch {batch_idx+1} failed: {e} — using statistical fallback for this batch")
+                    df_batch = generate_statistical_fallback(group, df_g, n_this, rng)
+                    all_batches.append(df_batch)
+                    batch_pid += n_this
 
-        # Save prompt to file for inspection
-        prompt_path = os.path.join(DATA_DIR, f"llm_prompt_{group}.txt")
-        with open(prompt_path, "w") as f:
-            f.write(full_prompt)
-        print(f"  Prompt saved → data/llm_prompt_{group}.txt  ({len(full_prompt):,} chars)")
+            # Save all raw responses
+            raw_out = os.path.join(DATA_DIR, f"llm_raw_{group}.txt")
+            with open(raw_out, "w") as f:
+                f.write("\n\n--- BATCH SEPARATOR ---\n\n".join(raw_all))
 
-        # ── (3) Generate synthetic data
-        if use_api:
-            print(f"  Calling Claude API (n={N_PER_GROUP})...")
-            try:
-                raw_response = call_claude_api(full_prompt)
-                raw_out = os.path.join(DATA_DIR, f"llm_raw_{group}.txt")
-                with open(raw_out, "w") as f:
-                    f.write(raw_response)
-                df_llm = parse_csv_response(raw_response, group)
-                print(f"  Parsed {len(df_llm)} rows from API response.")
-            except Exception as e:
-                print(f"  API call failed: {e}")
-                print("  Falling back to statistical resampling...")
-                df_llm = generate_statistical_fallback(group, df_g, N_PER_GROUP, rng)
+            df_llm = pd.concat(all_batches, ignore_index=True)
+            print(f"  Total rows from all batches: {len(df_llm)}")
         else:
             print("  Generating via statistical resampling (fallback)...")
             df_llm = generate_statistical_fallback(group, df_g, N_PER_GROUP, rng)
