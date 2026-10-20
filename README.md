@@ -65,15 +65,6 @@ python Project/03_analysis.py
 
 The preparation and synthetic-generation scripts use local file paths and an external course library that are not included in this repository. They need those inputs and paths configured before they can be rerun elsewhere.
 
-## Branch guide
-
-This repository has three branches. **[`main`](../../tree/main)** already contains the shared data preparation and analysis scripts, cleaned human and synthetic datasets, prompts, and final result tables. The other branches document separate analysis work; the number of branches does not measure any person's contribution.
-
-| Branch | Purpose and relationship to `main` |
-| --- | --- |
-| [`ATE_analysis_yiying`](../../tree/ATE_analysis_yiying) | Separate analysis branch with an additional [slides analysis notebook](../../blob/ATE_analysis_yiying/Project/slides_analysis.ipynb). That notebook is the one substantive file on this branch that is not in `main`; consult it there. |
-| [`Susana_analysis`](../../tree/Susana_analysis) | Earlier analysis snapshot. It is seven commits behind `main` and contains an earlier, smaller synthetic dataset; use `main` for final sample sizes and findings. |
-
 ## Scope and limitations
 
 - The human sample is small (49 graduate students from one university), and some outcomes have fewer complete pairs.
