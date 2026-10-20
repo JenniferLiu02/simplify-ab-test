@@ -54,6 +54,7 @@ The team also generated **1,056 synthetic respondents** with a professor-provide
 | [`Project/01_data_prep.py`](Project/01_data_prep.py) | Cleans the original Qualtrics export into human wide and long datasets. |
 | [`Project/02_gen_llm_data.py`](Project/02_gen_llm_data.py) | Builds prompts and generates or validates synthetic responses. |
 | [`Project/03_analysis.py`](Project/03_analysis.py) | Computes summary statistics, balance checks, paired treatment effects, subgroup analyses, regressions, and power calculations. |
+| [`Project/slides_analysis.ipynb`](Project/slides_analysis.ipynb) | Presentation analysis notebook by Yiying Lu, with result tables and figures for the final slides. |
 | [`Project/data/`](Project/data) | Saved cleaned datasets, prompts, and result tables. |
 | [`Project/ABT_Proposal.docx`](Project/ABT_Proposal.docx) | Original proposal. The final survey design above supersedes its initial two-page plan. |
 
