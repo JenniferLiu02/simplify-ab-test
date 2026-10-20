@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">Three landing page headline variants</title>
+<desc id="desc">Page A uses Simplify's current headline, Page B emphasizes interviews, and Page C emphasizes saving time. Respondents saw A then either B or C.</desc>
+<rect width="1200" height="420" rx="24" fill="#f4f8fb"/>
+<text x="54" y="57" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="700" fill="#15232d">One landing page. Three messaging frames.</text>
+<text x="54" y="89" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#52616b">Each participant rated the control, then one alternative.</text>
+<g font-family="Arial,Helvetica,sans-serif">
+<rect x="48" y="119" width="345" height="248" rx="18" fill="#fff" stroke="#c9d8e1" stroke-width="2"/>
+<rect x="69" y="140" width="98" height="28" rx="14" fill="#eaf0f4"/>
+<text x="88" y="159" font-size="14" font-weight="700" fill="#40515d">A · Control</text>
+<text x="70" y="212" font-size="28" font-weight="700" fill="#15232d">Your entire job</text>
+<text x="70" y="247" font-size="28" font-weight="700" fill="#15232d">search. Powered by</text>
+<text x="70" y="282" font-size="28" font-weight="700" fill="#15232d">one profile.</text>
+<text x="70" y="338" font-size="15" fill="#536774">Current homepage messaging</text>
+<rect x="427" y="119" width="345" height="248" rx="18" fill="#fff" stroke="#15a4bc" stroke-width="3"/>
+<rect x="448" y="140" width="106" height="28" rx="14" fill="#d9f3f7"/>
+<text x="467" y="159" font-size="14" font-weight="700" fill="#057b91">B · Outcome</text>
+<text x="449" y="212" font-size="28" font-weight="700" fill="#15232d">Land more</text>
+<text x="449" y="247" font-size="28" font-weight="700" fill="#15232d">interviews with</text>
+<text x="449" y="282" font-size="28" font-weight="700" fill="#15232d">every application.</text>
+<text x="449" y="338" font-size="15" fill="#536774">Results focused messaging</text>
+<rect x="806" y="119" width="345" height="248" rx="18" fill="#fff" stroke="#e8bd67" stroke-width="3"/>
+<rect x="827" y="140" width="117" height="28" rx="14" fill="#fff2d8"/>
+<text x="846" y="159" font-size="14" font-weight="700" fill="#8b5b08">C · Efficiency</text>
+<text x="828" y="212" font-size="28" font-weight="700" fill="#15232d">Save time on</text>
+<text x="828" y="247" font-size="28" font-weight="700" fill="#15232d">every job</text>
+<text x="828" y="282" font-size="28" font-weight="700" fill="#15232d">application.</text>
+<text x="828" y="338" font-size="15" fill="#536774">Convenience focused messaging</text>
+</g>
+</svg>
