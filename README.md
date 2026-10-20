@@ -6,7 +6,19 @@ This is a CMU A/B Testing course project by **Jennifer Liu, Yiying Lu, and Susan
 
 ## The experiment
 
-![Three landing page messaging variants](assets/messaging-variants.svg)
+The screenshots below are the landing pages used in the team's final presentation. The headline is the experimental change.
+
+**Page A · current homepage (control)**
+
+![Page A control landing page screenshot](assets/page-a-control.jpg)
+
+**Page B · outcome message**
+
+![Page B outcome-focused landing page screenshot](assets/page-b-outcome.jpg)
+
+**Page C · efficiency message**
+
+![Page C efficiency-focused landing page screenshot](assets/page-c-efficiency.jpg)
 
 | Page | Role | Headline |
 | --- | --- | --- |
@@ -17,8 +29,6 @@ This is a CMU A/B Testing course project by **Jennifer Liu, Yiying Lu, and Susan
 Participants were assigned to **AB** (25 people, A then B) or **AC** (24 people, A then C) using block randomization in Qualtrics. Each person rated both pages they saw on signup intent, perceived usefulness, likely regular use, and likelihood to recommend, each on a 1–5 scale. The analysis compares each treatment with that respondent's Page A rating. B and C were shown to different people, so they were not directly compared within the same respondent.
 
 ## Key findings
-
-![Key results for human respondents](assets/human-results.svg)
 
 The table below uses **human responses only**. Values are average paired changes from Page A; positive values mean the alternative scored higher.
 
@@ -57,11 +67,11 @@ The preparation and synthetic-generation scripts use local file paths and an ext
 
 ## Branch guide
 
-This repository has three branches. **[`main`](../../tree/main)** is the assembled project and the source for the final results above.
+This repository has three branches. **[`main`](../../tree/main)** already contains the shared data preparation and analysis scripts, cleaned human and synthetic datasets, prompts, and final result tables. The other branches document separate analysis work; the number of branches does not measure any person's contribution.
 
 | Branch | Purpose and relationship to `main` |
 | --- | --- |
-| [`ATE_analysis_yiying`](../../tree/ATE_analysis_yiying) | Separate analysis branch with an additional [slides analysis notebook](../../blob/ATE_analysis_yiying/Project/slides_analysis.ipynb). It has a commit that is not in `main`, so consult the notebook there. |
+| [`ATE_analysis_yiying`](../../tree/ATE_analysis_yiying) | Separate analysis branch with an additional [slides analysis notebook](../../blob/ATE_analysis_yiying/Project/slides_analysis.ipynb). That notebook is the one substantive file on this branch that is not in `main`; consult it there. |
 | [`Susana_analysis`](../../tree/Susana_analysis) | Earlier analysis snapshot. It is seven commits behind `main` and contains an earlier, smaller synthetic dataset; use `main` for final sample sizes and findings. |
 
 ## Scope and limitations
