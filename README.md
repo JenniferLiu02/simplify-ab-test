@@ -2,7 +2,7 @@
 
 **Can a homepage headline make students more interested in Simplify?** We compared Simplify's current headline with two alternatives: one promising more interviews and one emphasizing time saved. In a survey of 49 Carnegie Mellon University graduate students, the interview-focused headline increased **perceived usefulness by 0.50 points** on a five-point scale (paired test, p=.001), but **did not increase stated signup intent**.
 
-This is a CMU A/B Testing course project by **Jennifer Liu, Yiying Lu, and Susana Peng** (Spring 2026). The study used mock landing pages and survey ratings; it was not a live website experiment.
+The study used mock landing pages and survey ratings; it was not a live website experiment.
 
 ## The experiment
 
